@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "folyxVersion": "0.1.0",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36",
+  "notes": "",
+  "pixel10ProFoldVerified": false,
+  "dropped": 0,
+  "samples": [
+    {
+      "time": "2026-10-27T14:07:34.988Z",
+      "monotonicTime": 155525.20000004768,
+      "events": ["start"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 817,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 851.5392456054688,
+          "height": 816.6737060546875,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0001797676086426
+        },
+        "segments": [
+          { "x": 0, "y": 0, "width": 426, "height": 817 },
+          { "x": 426, "y": 0, "width": 426, "height": 817 }
+        ],
+        "posture": "folded",
+        "orientation": { "type": "portrait-primary", "angle": 0 },
+        "scroll": { "x": 0, "y": 1152.820556640625 },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": { "posture": "available", "segments": "available" },
+        "posture": { "value": "folded", "source": "browser" },
+        "viewport": { "value": { "width": 851, "height": 817 }, "source": "browser" },
+        "segments": {
+          "items": [{ "x": 0, "y": 0, "width": 851, "height": 817 }],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-27T14:07:35.631Z",
+      "monotonicTime": 156167,
+      "events": ["manual"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 817,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 851.5392456054688,
+          "height": 816.6737060546875,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0001797676086426
+        },
+        "segments": [
+          { "x": 0, "y": 0, "width": 426, "height": 817 },
+          { "x": 426, "y": 0, "width": 426, "height": 817 }
+        ],
+        "posture": "folded",
+        "orientation": { "type": "portrait-primary", "angle": 0 },
+        "scroll": { "x": 0, "y": 1152.820556640625 },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": { "posture": "available", "segments": "available" },
+        "posture": { "value": "folded", "source": "browser" },
+        "viewport": { "value": { "width": 851, "height": 817 }, "source": "browser" },
+        "segments": {
+          "items": [{ "x": 0, "y": 0, "width": 851, "height": 817 }],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    }
+  ]
+}

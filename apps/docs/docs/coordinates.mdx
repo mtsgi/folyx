@@ -15,17 +15,19 @@ Folyx checks the frame as well as the rectangle bounds. It leaves the measuremen
 
 ## How version 0.1 handles Browser measurements [#policy]
 
-The initial version uses the identity mapping, meaning the rectangles are used without a coordinate conversion, when layout and visual frames coincide. It checks that:
+Browser Provider uses the reported CSS px coordinates when layout and visual frames coincide within browser rounding. It checks that:
 
-- Visual scale is 1.
+- Visual scale is finite and positive, and `abs(scale - 1) * max(viewport.width, viewport.height)` is at most 1 CSS px.
 - The `offsetLeft` and `offsetTop` values are zero.
 - The dimensions agree within 1 CSS px, allowing for browser rounding.
 
-Rectangle bounds are checked separately for consistency. They aren't used on their own to establish the coordinate frame, and the values aren't clipped or numerically adjusted.
+The combined segment bounds must also agree with all four viewport edges within 1 CSS px. Browser Provider clamps overflowing edges to the viewport, keeping internal boundaries, gaps, and already in-bounds fractional coordinates unchanged. It does not expand regions that stop just short of the viewport. If clamping would leave any region with zero or negative width or height, the whole segment reading is withheld. Bounds alone do not establish the coordinate frame.
+
+For example, a Pixel 10 Pro Fold normal-display recording reports an 851 × 817 viewport, a visual scale of `1.0001797676086426`, and two touching 426 × 817 segments whose right edge reaches 852. Browser Provider returns widths of 426 and 425, preserving the internal boundary at x = 426. The public snapshot has `segments.source: "browser"`, `layout: "horizontal"`, and `gaps: []`. Layout viewport dimensions stay unchanged, and FoldLab retains the original measurements for comparison.
 
 If the visual viewport is unavailable or the frames differ, such as during zoom or a keyboard resize, Browser Provider keeps the raw segments out of the public state. A known layout viewport becomes one fallback region. If the viewport is also unknown, the region list stays empty. API availability remains `available` when the raw geometry could be read.
 
-Version 0.1 supports this identity mapping only; other coordinate transforms aren't enabled yet. Pixel 10 Pro Fold behavior hasn't been verified on hardware. Device names and UA strings aren't used as coordinate rules.
+Version 0.1 supports coincident frames with this bounded rounding correction; other coordinate transforms aren't enabled yet. The Pixel 10 Pro Fold recording reproduces the original normal-display fallback in regression tests. Hardware confirmation of the fix, zoom, pan, keyboard behavior, rotation, and folding transitions remain pending. Device names and UA strings aren't used as coordinate rules.
 
 ## Following changes and comparing measurements [#diagnosis]
 

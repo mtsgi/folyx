@@ -2,7 +2,9 @@
 
 Use FoldLab to collect measurements and explore how a real device behaves. These are contributor notes, kept outside the public documentation site.
 
-Pixel 10 Pro Fold measurements are still to come. Mock and desktop Device Mode are useful for developing and testing an interface; measurements on the device will help confirm how its browser behaves during everyday interactions. A provisional npm release can be published before that device verification is complete.
+Pixel 10 Pro Fold normal-display measurements from October 27, 2026 exposed a rounding-related fallback in 0.1.0. Both samples are preserved in the [regression fixture](../../packages/core/tests/fixtures/pixel-10-pro-fold-normal.json), including the original fallback snapshots. Hardware confirmation of the fix and verification of zoom, pan, keyboard behavior, rotation, and folding transitions remain pending. A provisional npm release can be published before that device verification is complete.
+
+The recorded layout viewport is 851 × 817, the visual scale is `1.0001797676086426`, and the two 426 × 817 native segments extend to x = 852. The coordinate policy now accepts a finite positive scale when `abs(scale - 1) * max(viewport.width, viewport.height) <= 1`, while still requiring zero visual offsets and at most one CSS pixel of dimension and outer-bound discrepancy. Only overflowing edges are clamped, so regression tests expect two touching regions of width 426 and 425, `segments.source: "browser"`, `layout: "horizontal"`, and no gaps. Raw readings stay unchanged. The fixture's `pixel10ProFoldVerified: false` remains unchanged because the full device verification is incomplete.
 
 ## Recording a device session
 

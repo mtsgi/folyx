@@ -1,6 +1,7 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
 import { createBrowserProvider, createFolyx } from "../src/index.ts";
 import { toLayoutSegments } from "../src/coordinates.ts";
+import pixel10ProFold from "./fixtures/pixel-10-pro-fold-normal.json" with { type: "json" };
 
 /** Minimal browser harness with manually controlled RAF and optional API readings. */
 class Browser extends EventTarget {
@@ -62,6 +63,89 @@ function setup() {
 
   return browser;
 }
+
+test.each(pixel10ProFold.samples)("maps the Pixel 10 Pro Fold sample at $time", ({ raw }) => {
+  const b = setup();
+  Object.assign(b, {
+    innerWidth: raw.layout.width,
+    innerHeight: raw.layout.height,
+    devicePixelRatio: raw.devicePixelRatio,
+    scrollX: raw.scroll.x,
+    scrollY: raw.scroll.y,
+  });
+  Object.assign(b.document, {
+    documentElement: { clientWidth: raw.layout.clientWidth, clientHeight: raw.layout.clientHeight },
+  });
+  Object.assign(b.visualViewport, raw.visual);
+  b.posture.type = raw.posture;
+  b.viewport.segments = raw.segments;
+  const original = structuredClone(raw);
+  const provider = createBrowserProvider();
+  const expected = [
+    { x: 0, y: 0, width: 426, height: 817 },
+    { x: 426, y: 0, width: 425, height: 817 },
+  ];
+  const observation = provider.getSnapshot();
+
+  expect(observation.segments).toEqual(expected);
+  expect(Object.isFrozen(observation.segments)).toBe(true);
+  expect(observation.segments?.every(Object.isFrozen)).toBe(true);
+
+  const state = createFolyx({ provider }).getSnapshot();
+
+  expect(state).toEqual({
+    availability: { posture: "available", segments: "available" },
+    posture: { value: "folded", source: "browser" },
+    viewport: { value: { width: 851, height: 817 }, source: "browser" },
+    segments: { items: expected, source: "browser" },
+    layout: "horizontal",
+    gaps: [],
+  });
+  expect(Object.isFrozen(state.segments.items)).toBe(true);
+  expect(state.segments.items.every(Object.isFrozen)).toBe(true);
+  expect(observation.segments?.[0]).not.toBe(raw.segments[0]);
+  expect(raw).toEqual(original);
+});
+
+test.each([
+  { name: "zoom", change: { scale: 2, width: 425.5 } },
+  { name: "horizontal pan", change: { offsetLeft: 0.01 } },
+  { name: "vertical pan", change: { offsetTop: 0.01 } },
+  { name: "keyboard shrink", change: { height: 400 } },
+])("restores rounded browser regions after $name", ({ change }) => {
+  const b = setup();
+  const { raw } = pixel10ProFold.samples[0]!;
+  b.innerWidth = raw.layout.width;
+  b.innerHeight = raw.layout.height;
+  b.viewport.segments = raw.segments;
+  Object.assign(b.visualViewport, raw.visual);
+  const folyx = createFolyx();
+  const listener = vi.fn();
+  const stop = folyx.subscribe(listener);
+  const normal = folyx.getSnapshot();
+
+  expect(normal.segments.source).toBe("browser");
+
+  Object.assign(b.visualViewport, change);
+  b.visualViewport.dispatchEvent(new Event("resize"));
+  b.flush();
+
+  expect(listener).toHaveBeenCalledTimes(2);
+  expect(listener.mock.lastCall?.[0].availability.segments).toBe("available");
+  expect(listener.mock.lastCall?.[0].segments).toEqual({
+    items: [{ x: 0, y: 0, width: 851, height: 817 }],
+    source: "fallback",
+  });
+
+  Object.assign(b.visualViewport, raw.visual);
+  b.visualViewport.dispatchEvent(new Event("resize"));
+  b.flush();
+
+  expect(listener).toHaveBeenCalledTimes(3);
+  expect(listener.mock.lastCall?.[0]).toEqual(normal);
+
+  stop();
+});
 
 test("synchronous reads before RAF do not consume existing subscribers' notifications", () => {
   const b = setup();

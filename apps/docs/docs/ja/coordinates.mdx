@@ -5,34 +5,40 @@ description: 座標の基準と、対応する座標変換の条件を説明し�
 
 ## 同じ基準で座標を扱う [#contract]
 
-UIの配置に座標を使うには、どこを基準に測った値かを確認する必要があります。Folyxのviewport・segments・gapsは、レイアウトビューポートの左上を原点とするCSS pxで表します。Browser Providerは、`innerWidth`と`innerHeight`からレイアウトビューポートの寸法を読み取ります。
+座標を使ってUIを配置するには、その値がどこを基準にしているかを知る必要があります。Folyxの`viewport`・`segments`・`gaps`は、レイアウトビューポートの左上を原点とし、CSS px単位で表します。Browser Providerは、`innerWidth`と`innerHeight`からレイアウトビューポートの幅と高さを読み取ります。
 
-Visual Viewportは、ページのうち現在見えている範囲です。ズームやパン、キーボードの表示によって、大きさや位置が変わります。単位が同じCSS pxでも、レイアウトビューポートと原点や座標系が一致するとは限りません。
+Visual Viewportは、ページのうち実際に見えている範囲です。ズームやパン、キーボードの表示によって、大きさや位置が変わります。そのため、同じCSS px単位の値でも、レイアウトビューポートと原点や座標系が一致するとは限りません。
 
-Folyxは、矩形が範囲内に収まるかだけでなく、座標系も確認します。寸法の比率、`devicePixelRatio`、`visualViewport.scale`から補正値を推測することはせず、取得した値のスケールを保ちます。
+Folyxは、領域がビューポート内に収まるかと、座標系が一致するかをそれぞれ確認します。寸法の比率や`devicePixelRatio`、`visualViewport.scale`を使って座標を拡大・縮小することはありません。
 
 <DocDiagram kind="coordinates" locale="ja" />
 
 ## バージョン0.1で扱えるブラウザの計測値 [#policy]
 
-バージョン0.1では、レイアウトビューポートとVisual Viewportが一致する場合に、座標を変換せずに使います。次の条件をすべて確認します。
+ブラウザが返す寸法や倍率には、わずかな丸め誤差が含まれることがあります。Browser Providerは、この誤差を考慮して次の条件を確認し、レイアウトビューポートとVisual Viewportの座標を同じ基準で扱えるか判断します。
 
-- Visual Viewportのscaleが1であること。
-- `offsetLeft`と`offsetTop`が0であること。
-- 寸法の差が、ブラウザの丸めを考慮して1 CSS px以内であること。
+- Visual Viewportの`scale`が有限の正数で、`abs(scale - 1) * max(viewport.width, viewport.height)`が1 CSS px以下。
+- `offsetLeft`と`offsetTop`がどちらも0。
+- レイアウトビューポートとVisual Viewportの幅と高さの差が、それぞれ1 CSS px以内。
 
-矩形の境界については、これとは別に整合性を確認します。矩形が範囲内に収まるという理由だけで、座標系が一致すると判断することはありません。矩形の切り取りや数値の補正も行いません。
+これらに加えて、領域全体を囲む四辺とビューポートの四辺との差も、それぞれ1 CSS px以内か確認します。ビューポートからはみ出した部分があれば、その部分だけを切り取ります。領域同士の境界や隙間、範囲内にある小数の座標はそのままです。ビューポートに少し届かない領域を広げて余白を埋めることはしません。補正後に幅や高さが0以下になる領域があれば、その計測結果は使わずにフォールバックします。
 
-Visual Viewportを取得できない場合や、ズーム・キーボード表示などで座標系が異なる場合、Browser Providerは生の矩形を公開状態へ渡しません。レイアウトビューポートの寸法が既知なら、その全体を1つのフォールバック領域として返します。viewportも不明なら、領域は空配列になります。APIから生の領域を読み取れていれば、availabilityは`available`のままです。
+たとえば、Pixel 10 Pro Foldの通常表示の記録では、幅851px・高さ817pxのビューポートに対し、幅426px・高さ817pxの領域が2つ返されました。倍率は`1.0001797676086426`で、2つ目の領域の右端がビューポートから1pxはみ出しています。
 
-バージョン0.1が対応するのは、座標を変換せずに使える場合だけです。それ以外の座標変換は未対応です。Pixel 10 Pro Foldでの実機検証もまだ行っていません。端末名やUA文字列を使って座標の変換規則を決めることはありません。
+この場合、Browser Providerは2つ目の領域の幅を425pxに補正します。2つの領域が接する位置はx = 426のままで、スナップショットは`segments.source: "browser"`、`layout: "horizontal"`、`gaps: []`になります。ビューポートの寸法は変えず、FoldLabには比較用として補正前の計測値も残します。
+
+Visual Viewportを取得できない場合や、ズーム・キーボード表示などによって座標系が異なる場合も、フォールバックに切り替えます。レイアウトビューポートの寸法がわかれば、その全体を覆う1つの領域を返します。寸法も不明な場合は空配列になります。APIから元の領域を読み取れていれば、`availability.segments`は`available`のままです。
+
+バージョン0.1が対応するのは、ここで説明した丸め誤差の補正までです。それ以外の座標変換には対応していません。端末名やUA文字列によって補正方法を変えることもありません。
+
+Pixel 10 Pro Foldの記録は、今回の不具合を再現し、修正を確かめる回帰テストに使っています。修正後の実機での動作確認はこれからです。ズームやパン、キーボード表示、回転、折りたたみ時の動作についても、引き続き実機で確認する必要があります。
 
 ## 変化を追い、計測値を比べる [#diagnosis]
 
-Browser Providerは、windowのresize、姿勢の変更、画面の回転、ページの復帰、visibilitychange、Visual Viewportのresize/scrollを監視します。Visual Viewportの計測値は、公開するsnapshotには含めません。
+Browser Providerは、ウィンドウのリサイズ、端末の姿勢や画面の向きの変化、ページへの復帰、表示状態の変化を監視します。Visual Viewportのリサイズやスクロールにも追従しますが、その計測値自体はスナップショットに含めません。
 
-計測値を調べるには、FoldLabを使います。ブラウザの生の値と公開snapshotを並べて記録できるため、元の値を残したまま比較できます。CSSの`env(viewport-segment-*)`もFoldLabでの比較に使いますが、Coreの情報源には含めていません。
+計測値を詳しく調べたいときは、FoldLabを使えます。ブラウザから取得した値とFolyxのスナップショットを並べて記録し、補正前後の違いを確認できます。CSSの`env(viewport-segment-*)`も比較用に記録しますが、Coreが値を取得するためには使っていません。
 
-Browser Providerが使うのは、`navigator.devicePosture`と`window.viewport.segments`です。旧APIの`visualViewport.segments`や`getWindowSegments`には対応していません。APIの検出とフォールバックによって、同じアプリのコードを各ブラウザで動かせます。取得できる情報は、ブラウザのAPI対応状況によって異なります。
+Browser Providerは、`navigator.devicePosture`と`window.viewport.segments`を使います。旧APIの`visualViewport.segments`や`getWindowSegments`には対応していません。ブラウザごとにAPIの対応状況を調べ、使えない場合はフォールバックするため、アプリ側では同じコードを使えます。ただし、取得できる情報はブラウザによって異なります。
 
 APIや座標系の詳細は、[参考資料](/references)を参照してください。

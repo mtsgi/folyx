@@ -46,7 +46,7 @@ If you're new to Folyx, the [design guide](apps/docs/docs/philosophy.mdx) is a g
 
 For project contributors, the [maintainer notes](docs/maintainers/README.md) cover device measurements, development, builds, and publishing. These repository documents stay outside the public documentation site.
 
-Pixel 10 Pro Fold measurements are still pending. In version 0.1, Browser segments are used when layout and visual frames coincide and their bounds are consistent. For zoom or keyboard states whose coordinate mapping hasn't been verified, Folyx returns one fallback region covering the known layout viewport. API availability stays separate from that choice, and scale or DPR corrections aren't guessed.
+Pixel 10 Pro Fold normal-display measurements exposed a near-unit visual scale and a one-CSS-pixel segment overflow. Browser Provider accepts coincident layout and visual frames within a one-CSS-pixel rounding budget and clamps overflowing segment edges to the layout viewport, preserving internal boundaries. Regression tests replay both supplied samples. Hardware confirmation of the fix and verification of zoom, pan, keyboard behavior, rotation, and folding transitions remain pending. Frames outside that budget still use one fallback region covering the known layout viewport, while API availability remains separate. Scale and DPR corrections aren't guessed.
 
 GitHub Actions workflows are included for CI, Pages deployment, and manual same-version npm releases. Before the first publication, the scope access, initial package publication, per-package Trusted Publishers, and Pages settings need to be connected to your accounts. Local validation builds and checks the artifacts.
 
