@@ -11,7 +11,7 @@ const source = join(root, "apps/docs");
 const staging = await mkdtemp(join(root, ".docs-build-"));
 
 try {
-  for (const entry of ["docs", "blume.config.ts", "package.json"])
+  for (const entry of ["docs", "components", "components.ts", "blume.config.ts", "package.json"])
     await cp(join(source, entry), join(staging, entry), { recursive: true });
 
   execFileSync(process.execPath, [join(root, "node_modules/blume/bin/blume.mjs"), "build"], {

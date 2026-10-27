@@ -1,13 +1,11 @@
 ---
 title: VueとSSR
-description: Folyxの状態を、Vueのリアクティビティとライフサイクルにつなぎます。
+description: Folyxの状態をVueで使う方法と、SSRでの動作を説明します。
 ---
 
-`useFolyx()` は、Core の snapshot を Vue のリアクティビティにつなぐための関数です。パッケージを追加し、コンポーネントの setup 内で呼び出します。
+`useFolyx()`を使うと、Folyxの状態に合わせてVueの表示を更新できます。パッケージを追加し、コンポーネントのsetup内で呼び出します。
 
-```sh
-npm install @folyx/core @folyx/vue vue
-```
+<PackageInstall packages={["@folyx/core", "@folyx/vue", "vue"]} />
 
 ```vue
 <script setup lang="ts">
@@ -24,11 +22,11 @@ const { posture, layout, segments, snapshot } = useFolyx();
 </template>
 ```
 
-posture・layout・segments・viewport・gaps・snapshot を、読み取り専用の computed ref で受け取れます。snapshot の保持には `shallowRef` を使い、不変のデータを小さな接続で Vue に渡しています。Vue 3.5以降で利用できます。
+posture・layout・segments・viewport・gaps・snapshotを、読み取り専用のcomputed refとして受け取れます。snapshotは`shallowRef`で保持し、不変のオブジェクトのままVueに渡します。Vue 3.5以降に対応しています。
 
 ## インスタンスを共有する [#sharing]
 
-引数なしの `useFolyx()` は、呼び出しごとに Core のインスタンスを作ります。`useFolyx({ provider })` で Provider を指定したり、`useFolyx({ folyx })` で既存のインスタンスを共有したりできます。
+引数なしで`useFolyx()`を呼ぶと、呼び出しごとにCoreのインスタンスを作成します。`useFolyx({ provider })`でProviderを指定できます。既存のインスタンスを共有するには、`useFolyx({ folyx })`を使います。
 
 ```ts
 const folyx = createFolyx({ provider: mock });
@@ -36,16 +34,18 @@ const folyx = createFolyx({ provider: mock });
 const state = useFolyx({ folyx });
 ```
 
-引数なし、または Provider を指定した場合は、Composable が自身の Core インスタンスと購読を管理します。外部から渡した Provider の所有者は呼び出し元のままで、Vue 側では破棄しません。
+引数なし、またはProviderを指定した場合、`useFolyx()`がCoreのインスタンスと購読を管理します。外部から渡されたProviderは呼び出し元が管理し、Vue側では破棄しません。
 
-Folyx のインスタンスを共有した場合、各コンポーネントが管理するのは、自分で始めた購読だけです。1つのコンポーネントが終了しても、兄弟コンポーネントや呼び出し元への通知は続きます。共有インスタンス自体の管理は、呼び出し元が担当します。指定する場合は、`provider` と `folyx` のどちらか一方を渡します。
+Folyxのインスタンスを共有した場合、各コンポーネントは自分が始めた購読だけを管理します。1つのコンポーネントが終了しても、ほかのコンポーネントや呼び出し元への通知は続きます。共有インスタンス自体は呼び出し元が管理します。`provider`と`folyx`は同時に指定できないため、どちらか一方を渡してください。
 
-## サーバーとクライアントで、同じ状態から始める [#hydration]
+## SSRと初回描画の状態を揃える [#hydration]
 
-SSRとクライアントの初回描画は、常に同じ状態から始まります。姿勢と layout は `unknown`、APIは `unavailable`、viewport は `null`、領域は空配列です。共有インスタンスがすでに値を持っている場合も同じです。SSR中は、そのインスタンスを読み取ったり購読したりしません。
+サーバーサイドレンダリング（SSR）とクライアントの初回描画は、同じ初期値から始まります。姿勢とlayoutは`unknown`、APIは`unavailable`、viewportは`null`、領域は空配列です。共有インスタンスがすでに値を持っていても、この初期値を使います。SSR中に、そのインスタンスを読み取ったり購読したりすることはありません。
 
-mount 後に購読を始め、その時点の最新値をすぐに受け取ります。setup から mount までのあいだに状態が変わっていても、その値が反映されます。scope の終了時は自身の購読を解除し、解除処理が重なっても安全に扱います。mount されなかったコンポーネントは、購読を始めません。
+mount後に購読を始め、その時点の最新値をすぐに受け取ります。setupからmountまでの間に状態が変わっていても、最新の状態が反映されます。コンポーネントのscopeが終了すると、自分の購読を解除します。解除処理が複数回呼ばれても問題ありません。mountされなかったコンポーネントは購読を始めません。
 
-SSRでインスタンスを共有するときは、リクエストごとに生成します。こうすることで、利用者どうしの状態を分けて扱えます。Core の寿命は購読と参照によって管理されるため、追加で呼ぶ destroy メソッドはありません。
+SSRでインスタンスを共有するときは、リクエストごとに作成してください。利用者ごとに状態を分けるためです。Coreの寿命は購読と参照によって管理されるため、追加で呼び出すdestroyメソッドはありません。
 
-ライフサイクルやリクエスト間の分離については、[Vue SSRガイド](https://vuejs.org/guide/scaling-up/ssr)でも詳しく紹介されています。
+<DocDiagram kind="ssr" locale="ja" />
+
+ライフサイクルやリクエスト間での状態の分離については、[Vue SSRガイド](https://vuejs.org/guide/scaling-up/ssr)を参照してください。

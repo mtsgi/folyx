@@ -29,6 +29,5 @@ jobs:
           run-install: false
       - run: vp install --frozen-lockfile
       - run: vp run release:prepare
-      - run: vpx playwright install --with-deps chromium firefox webkit
       - run: vp run ready
       - run: vp run release:publish

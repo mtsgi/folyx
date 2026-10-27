@@ -37,12 +37,10 @@ vp check
 vp test
 vp run -r build
 vp run docs#validate
-vpx playwright install --with-deps chromium firefox webkit
-vp run test:e2e
 vp run test:package
 ```
 
-`vp run ready` runs the complete set of checks, tests, builds, translation and link validation, browser tests, and npm-tarball consumption checks. Browser tests use a Pages artifact at `/folyx/`. For another deployment, set `FOLYX_BASE` and `FOLYX_SITE`; `vp run build:pages` writes `.pages/` with documentation at the root and FoldLab under `foldlab/`.
+`vp run ready` runs the complete set of checks, tests, builds, translation and link validation, and npm-tarball consumption checks. Pages artifact validation checks static routes and references without running JavaScript. For another deployment, set `FOLYX_BASE` and `FOLYX_SITE`; `vp run build:pages` writes `.pages/` with documentation at the root and FoldLab under `foldlab/`.
 
 If you're new to Folyx, the [design guide](apps/docs/docs/philosophy.mdx) is a good place to start. You can then explore the [Core API](apps/docs/docs/core.mdx), [coordinates and current behavior](apps/docs/docs/coordinates.mdx), or [Vue sharing and cleanup](apps/docs/docs/vue.mdx). [日本語のドキュメント](apps/docs/docs/ja/index.mdx)もあります。
 

@@ -1,0 +1,33 @@
+---
+import data from "blume:data";
+import DocDiagram from "./DocDiagram.astro";
+import { heroContent, type DocsLocale } from "./content.ts";
+
+interface Props { locale?: DocsLocale }
+const { locale = "en" } = Astro.props;
+const content = heroContent[locale];
+const foldlabHref = data.navigation.actions?.find((action) => action.label === "FoldLab ↗")?.href;
+---
+
+<section class="hero not-prose" data-doc-hero>
+  <div>
+    <p class="headline">{content.headline}</p>
+    <p class="intro">{content.body}</p>
+    <div class="actions">
+      <a class="primary" href="#install">{content.start}<span aria-hidden="true"> ↓</span></a>
+      <a href={foldlabHref}>{content.experiment}<span aria-hidden="true"> ↗</span></a>
+    </div>
+  </div>
+  <DocDiagram kind="overview" locale={locale} />
+</section>
+
+<style>
+  .hero { margin: 2rem 0 3rem; }
+  .headline { max-width: 19em; margin: 0; font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.35; letter-spacing: -0.03em; text-wrap: balance; }
+  .intro { max-width: 40em; margin: 1rem 0 0; color: var(--blume-muted-foreground); line-height: 1.8; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin: 1.5rem 0; }
+  .actions a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1rem; border: 1px solid var(--blume-border); border-radius: var(--blume-radius); color: var(--blume-foreground); font-size: 0.875rem; font-weight: 600; text-decoration: none; }
+  .actions a:hover { background: var(--blume-muted); }
+  .actions .primary { border-color: var(--blume-accent); background: var(--blume-accent); color: var(--blume-accent-foreground); transition: background-color 150ms ease, border-color 150ms ease; }
+  .actions .primary:is(:hover, :focus-visible) { border-color: color-mix(in oklch, var(--blume-accent) 88%, var(--blume-foreground)); background: color-mix(in oklch, var(--blume-accent) 88%, var(--blume-foreground)); color: var(--blume-accent-foreground); }
+</style>

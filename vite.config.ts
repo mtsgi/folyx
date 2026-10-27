@@ -16,6 +16,8 @@ export default defineConfig({
   },
 
   fmt: {
+    // Local browser-test artifacts may be retained without being treated as source files.
+    ignorePatterns: ["test-results/**"],
     overrides: [
       {
         files: ["**/*.vue"],

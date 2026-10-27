@@ -6,7 +6,6 @@ These sources support work on the project: browser testing, the toolchain, docum
 - [Web Platform Tests — Viewport Segments](https://wpt.fyi/results/viewport-segments)
 - [Vitest — Mocking](https://vitest.dev/guide/mocking.html)
 - [Vitest — Timers](https://vitest.dev/guide/mocking/timers)
-- [Playwright — Emulation](https://playwright.dev/docs/emulation)
 - [Vite+ — Monorepo](https://viteplus.dev/guide/monorepo)
 - [Vite+ — Pack](https://viteplus.dev/guide/pack)
 - [Vite+ — Package Management](https://viteplus.dev/guide/package-management)

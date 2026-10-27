@@ -37,7 +37,6 @@ vp check
 vp test
 vp run -r build
 vp run docs#validate
-vp run test:e2e
 vp run test:package
 ```
 

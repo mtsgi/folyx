@@ -1,8 +1,12 @@
 import { defineConfig } from "blume";
+import { diagramMarkdown, heroMarkdown, installMarkdown } from "./components/markdown.ts";
 
 const base = process.env.FOLYX_BASE ?? "/folyx/";
 const site =
   process.env.FOLYX_SITE ?? (process.argv.includes("build") ? "http://127.0.0.1:4173" : undefined);
+const foldlabHref = site
+  ? new URL(`${base.replace(/\/$/, "")}/foldlab/`, site).href
+  : "http://localhost:5173/";
 
 /** Public library documentation, with a shared deployment base and bilingual prose. */
 export default defineConfig({
@@ -10,6 +14,13 @@ export default defineConfig({
   description: "Explore foldable screen state with a small TypeScript API.",
   // Maintainer notes live outside this content root and stay out of generated output.
   content: { root: "docs" },
+  agents: {
+    markdownComponents: {
+      DocsHero: heroMarkdown(foldlabHref),
+      DocDiagram: diagramMarkdown,
+      PackageInstall: installMarkdown,
+    },
+  },
   theme: { accent: "teal", radius: "md" },
   i18n: {
     defaultLocale: "en",
@@ -33,11 +44,11 @@ export default defineConfig({
     actions: [
       {
         label: "FoldLab ↗",
-        href: site
-          ? new URL(`${base.replace(/\/$/, "")}/foldlab/`, site).href
-          : "http://localhost:5173/",
+        href: foldlabHref,
       },
     ],
+    // Header actions are hidden on narrow screens; featured links also appear in the mobile drawer.
+    featured: [{ label: "FoldLab", href: foldlabHref }],
   },
   seo: { og: { enabled: false } },
 });

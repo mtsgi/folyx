@@ -1,25 +1,25 @@
 {
   "files": {
     "docs/coordinates.mdx": {
-      "ja": "9083bec7fc7a1c21"
+      "ja": "bafc3ae4be7c0182"
     },
     "docs/core.mdx": {
-      "ja": "7837235ca677fcc3"
+      "ja": "2a0c399789ec2c23"
     },
     "docs/index.mdx": {
-      "ja": "f2449623afac0bae"
+      "ja": "cdbe6bd1868cf3e3"
     },
     "docs/philosophy.mdx": {
-      "ja": "80be97605079f4d6"
+      "ja": "52252edc0bb323fb"
     },
     "docs/providers.mdx": {
-      "ja": "d21e344255239858"
+      "ja": "241d86e37dd3d9bb"
     },
     "docs/references.mdx": {
       "ja": "1360734cce613f06"
     },
     "docs/vue.mdx": {
-      "ja": "c2b349ce4b720843"
+      "ja": "9ab386046850debf"
     }
   },
   "version": 1

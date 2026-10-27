@@ -22,6 +22,8 @@ A snapshot is a deeply frozen, readonly object. Its reference stays the same whi
 
 For layout, `horizontal` means regions with a matching top edge and height, arranged side by side. `vertical` means matching left edges and widths, arranged top to bottom. These names describe the regions rather than the hinge. Regions are sorted by y, then x, and their count isn't limited to two. Mock regions that overlap, extend beyond the viewport, or don't align use `complex`.
 
+<DocDiagram kind="layout" locale="en" />
+
 ## Understanding availability and source [#availability]
 
 There are two useful questions to ask about a value: could the API provide information, and where did the value you're using come from?

@@ -1,13 +1,15 @@
 ---
 title: ProviderとMock
-description: Mockで画面の形を試したり、独自の情報源をつないだりするには。
+description: Mockで画面の形を試す方法と、独自の情報源をつなぐ方法を説明します。
 ---
 
-Provider は、Folyx に情報を渡す取得元の役割を担います。ブラウザから読み取る場合も、テスト用に値を用意する場合も、同じインターフェースで扱います。
+Providerは、姿勢や表示領域の情報をFolyxに渡すためのインターフェースです。ブラウザで計測した値も、テスト用に用意した値も、同じ方法で扱えます。
+
+<DocDiagram kind="providers" locale="ja" />
 
 ## Mockで画面の形を試す [#mock]
 
-Mock Provider は、折りたたみデバイスが手元にないときのUIづくりやテストに使えます。Browser Provider と同じインターフェースで扱え、アプリの実行中にも状態を変えられます。
+Mock Providerを使うと、折りたたみデバイスが手元になくてもUIの開発やテストができます。Browser Providerと同じインターフェースで利用でき、アプリの実行中に状態を変更することもできます。
 
 ```ts
 import { createFolyx, createMockProvider } from "@folyx/core";
@@ -24,19 +26,19 @@ mock.set({ posture: "continuous" });
 mock.set({ availability: { segments: "unsupported" } });
 ```
 
-`set(patch)` は、指定した項目を更新し、省略した項目をそのまま保ちます。viewport や segments を指定した場合は、その項目全体を置き換えます。入力はコピーされるので、渡したオブジェクトを後から編集しても Provider の状態は変わりません。
+`set(patch)`は、指定した項目だけを更新します。省略した項目は変わりません。viewportやsegmentsを指定すると、その項目全体を置き換えます。入力はコピーされるため、渡したオブジェクトを後から編集してもProviderの状態には影響しません。
 
-姿勢や `null` 以外の領域を渡すと、availability を明示しない限り `available` になります。`segments: null` は既定で `unavailable` です。APIを持たないブラウザを試したい場合は、`unsupported` を指定できます。
+姿勢や`null`以外の領域を渡すと、availabilityを明示しない限り、その項目は`available`になります。`segments: null`のデフォルトは`unavailable`です。APIに未対応のブラウザを再現するには、`unsupported`を指定します。
 
-APIから読み取れても座標変換できない状態も再現できます。`availability.segments: "available"` と `segments: null` を組み合わせると、Core はAPIの状態を `available` に保ちながらフォールバックを返します。
+APIの読み取りには成功しても、座標を変換できない状態も再現できます。`availability.segments: "available"`と`segments: null`を組み合わせます。viewportの寸法が既知なら、CoreはAPIの状態を`available`に保ちながらフォールバックを返します。
 
-APIを `available` 以外へ切り替えると、その観測値をクリアします。再び `available` にするときは、新しい値も渡します。これにより、以前の値が意図せず戻ることを防ぎます。領域が `available` のときの空配列、`NaN` や `Infinity` のような有限でない数値、0以下の寸法はエラーになります。この場合、更新全体を見送り、変更前の状態を保ちます。
+APIを`available`以外に切り替えると、その観測値はクリアされます。再び`available`にするときは、新しい値も渡してください。以前の値が意図せず使われるのを防ぐためです。領域が`available`のときの空配列、`NaN`や`Infinity`などの有限でない数値、0以下の寸法はエラーになります。エラーがある場合は更新全体が拒否され、変更前の状態が保たれます。
 
-実験用に、領域の重なりや viewport の範囲外にある領域は指定できます。数値や寸法の検証は保ったまま、`complex` な配置をアプリがどう扱うか試せます。
+領域が重なる配置や、viewportの範囲外にある領域は指定できます。数値や寸法の検証を維持しつつ、`complex`な配置をアプリでどう扱うか試せます。
 
 ## 独自のProviderをつなぐ [#custom]
 
-別の情報源と連携したい場合は、独自の Provider を用意できます。必要なのは、同期的に状態を返す `getSnapshot()` と、解除関数を返す `subscribe(listener)` です。
+別の情報源を使うには、独自のProviderを実装します。必要なのは、同期的に状態を返す`getSnapshot()`と、購読の解除関数を返す`subscribe(listener)`です。
 
 固定の状態を返す最小の例は、次のようになります。
 
@@ -55,6 +57,6 @@ const provider: FolyxProvider = {
 };
 ```
 
-Provider は変更だけを通知し、最初の通知は Core が担当します。状態が変わる情報源では、その時点の値を通知し、購読解除時に自身のリスナーを解放する形で実装します。
+Providerが通知するのは状態の変化だけで、購読直後の通知はCoreが行います。状態が変わる情報源では、変更時に最新値を通知してください。購読が解除されたら、Providerが登録したリスナーも解除します。
 
-Provider が返す segments は、Folyx の[レイアウト座標](/coordinates)に揃える必要があります。APIから取得できても安全に変換できない場合は、availability を `available` に保ち、segments に `null` を返します。フォールバックは Core に任せられます。診断用の生値は、公開するレイアウト状態とは別に記録できます。
+Providerが返すsegmentsは、Folyxの[レイアウト座標](/coordinates)に揃える必要があります。APIから取得できても安全に変換できない場合は、availabilityを`available`のままにして、segmentsに`null`を返します。フォールバックの処理はCoreに任せられます。診断用の生の計測値は、公開する状態とは分けて記録してください。

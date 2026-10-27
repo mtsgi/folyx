@@ -11,6 +11,8 @@ The visual viewport describes the part of the page currently in view. Its size a
 
 Folyx checks the frame as well as the rectangle bounds. It leaves the measurements at their reported scale rather than guessing a correction from size ratios, `devicePixelRatio`, or `visualViewport.scale`.
 
+<DocDiagram kind="coordinates" locale="en" />
+
 ## How version 0.1 handles Browser measurements [#policy]
 
 The initial version uses the identity mapping, meaning the rectangles are used without a coordinate conversion, when layout and visual frames coincide. It checks that:

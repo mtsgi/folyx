@@ -8,6 +8,14 @@ const root = resolve(import.meta.dirname, "../.pages");
 const base = `${(process.env.FOLYX_BASE ?? "/folyx/").replace(/\/$/, "")}/`;
 const origin = process.env.FOLYX_SITE ?? "http://127.0.0.1:4173";
 const files: string[] = [];
+const guideDiagrams = {
+  index: "overview",
+  core: "layout",
+  providers: "providers",
+  coordinates: "coordinates",
+  vue: "ssr",
+  philosophy: "philosophy",
+} as const;
 
 /** Collect generated HTML pages, including locale routes and FoldLab. */
 async function walk(dir: string) {
@@ -21,9 +29,11 @@ async function walk(dir: string) {
 await walk(root);
 
 for (const path of [
-  "index.html",
-  "ja/philosophy/index.html",
-  "core/index.html",
+  ...["", "ja/"].flatMap((locale) =>
+    ["index", "core", "providers", "coordinates", "vue", "philosophy", "references"].map(
+      (guide) => `${locale}${guide === "index" ? "" : `${guide}/`}index.html`,
+    ),
+  ),
   "foldlab/index.html",
   "blume-search.json",
 ])
@@ -46,6 +56,114 @@ for (const file of files) {
     },
   });
   dom.document.write(html);
+
+  const route = relative(root, file).split(sep).join("/");
+  if (route !== "404.html" && !route.startsWith("foldlab/")) {
+    const document = dom.document;
+    const guide = route
+      .replace(/^ja\//, "")
+      .replace(/\/index\.html$/, "")
+      .replace(/\.html$/, "");
+    const markdownPath =
+      route === "index.html" ? "index.md" : route.replace(/\/index\.html$/, ".md");
+    const markdown = await readFile(join(root, markdownPath), "utf8");
+    assert.equal(document.querySelectorAll("h1").length, 1, `Expected one page title in ${route}`);
+    assert(
+      !/<(?:DocsHero|DocDiagram|PackageInstall)\b/.test(markdown),
+      `Unconverted component in ${markdownPath}`,
+    );
+
+    if (Object.hasOwn(guideDiagrams, guide)) {
+      const kind = guideDiagrams[guide as keyof typeof guideDiagrams];
+      const diagram = document.querySelector(`[data-doc-diagram="${kind}"]`);
+      assert(diagram, `Missing ${kind} diagram in ${route}`);
+      assert(
+        diagram.querySelector("figcaption")?.textContent?.trim(),
+        `Missing diagram caption in ${route}`,
+      );
+      assert(diagram.querySelector("svg"), `Missing SVG in ${route}`);
+      for (const svg of diagram.querySelectorAll("svg")) {
+        assert(svg.hasAttribute("viewBox"), `Missing responsive SVG viewport in ${route}`);
+        assert.equal(svg.getAttribute("role"), "img", `Missing SVG role in ${route}`);
+        assert(svg.getAttribute("aria-label"), `Missing SVG label in ${route}`);
+        assert(svg.querySelector("title")?.textContent?.trim(), `Missing SVG title in ${route}`);
+        assert(
+          svg.querySelector("desc")?.textContent?.trim(),
+          `Missing SVG description in ${route}`,
+        );
+      }
+      const explanation = diagram.querySelector("figcaption p")!.textContent!.trim();
+      assert(markdown.includes(explanation), `Missing diagram explanation in ${markdownPath}`);
+    }
+
+    if (guide === "index") {
+      const hero = document.querySelector("[data-doc-hero]");
+      assert(hero, `Missing docs hero in ${route}`);
+      assert(document.getElementById("install"), `Missing installation anchor in ${route}`);
+      assert(hero.querySelector('a[href="#install"]'), `Missing get-started link in ${route}`);
+      const experiment = [...hero.querySelectorAll("a")].find(
+        (link) =>
+          new URL(link.getAttribute("href")!, page).href ===
+          new URL(`${base}foldlab/`, origin).href,
+      );
+      assert(experiment, `Missing FoldLab hero link in ${route}`);
+      assert(
+        markdown.includes(hero.querySelector(".headline")!.textContent!.trim()),
+        `Missing hero copy in ${markdownPath}`,
+      );
+    }
+
+    if (guide === "index" || guide === "vue") {
+      const installer = document.querySelector("[data-package-install] blume-tabs");
+      assert(installer, `Missing package manager switcher in ${route}`);
+      assert.equal(
+        installer.getAttribute("data-hash"),
+        "false",
+        `Installation tabs change the anchor in ${route}`,
+      );
+      assert.equal(
+        installer.getAttribute("data-sync-key"),
+        "folyx-install",
+        `Unscoped installation tabs in ${route}`,
+      );
+      const panels = [...installer.querySelectorAll("[data-blume-tab-panel]")];
+      assert.deepEqual(
+        panels.map((panel) => panel.getAttribute("data-title")),
+        ["npm", "pnpm", "Yarn", "Bun"],
+        `Incorrect package managers in ${route}`,
+      );
+      const packages = guide === "vue" ? "@folyx/core @folyx/vue vue" : "@folyx/core";
+      for (const [index, prefix] of ["npm install", "pnpm add", "yarn add", "bun add"].entries()) {
+        const command = `${prefix} ${packages}`;
+        assert.equal(
+          panels[index]!.querySelector("pre code")?.textContent?.trim(),
+          command,
+          `Incorrect command in ${route}`,
+        );
+        assert(markdown.includes(command), `Missing ${prefix} command in ${markdownPath}`);
+      }
+    }
+
+    const drawer = dom.document.querySelector("[data-blume-nav-drawer]");
+    assert(drawer, `Missing navigation drawer in ${route}`);
+
+    const toggle = dom.document.querySelector("[data-blume-header] [data-blume-nav-toggle]");
+    assert.equal(
+      toggle?.getAttribute("aria-controls"),
+      drawer.id,
+      `Missing menu toggle on ${route}`,
+    );
+
+    const foldlab = [...drawer.querySelectorAll("a")].find(
+      (link) => link.textContent?.trim() === "FoldLab",
+    );
+    assert(foldlab, `Missing FoldLab link in the navigation drawer on ${route}`);
+    assert.equal(
+      new URL(foldlab.getAttribute("href")!, page).href,
+      new URL(`${base}foldlab/`, origin).href,
+      `Incorrect FoldLab link on ${route}`,
+    );
+  }
 
   const links = [...dom.document.querySelectorAll("[href], [src]")].flatMap((element) =>
     [element.getAttribute("href"), element.getAttribute("src")].filter(

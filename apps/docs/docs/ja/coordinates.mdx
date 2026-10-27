@@ -1,36 +1,38 @@
 ---
 title: 座標系と互換性
-description: 座標が何を表しているかと、まだ変換できない値の扱いについて。
+description: 座標の基準と、対応する座標変換の条件を説明します。
 ---
 
 ## 同じ基準で座標を扱う [#contract]
 
-座標をUIに使うときは、どこから測った値かがわかると扱いやすくなります。Folyx の viewport・segments・gaps は、レイアウトビューポートの左上を原点とする CSS px に揃えています。Browser Provider は `innerWidth` と `innerHeight` からレイアウトの寸法を読み取ります。
+UIの配置に座標を使うには、どこを基準に測った値かを確認する必要があります。Folyxのviewport・segments・gapsは、レイアウトビューポートの左上を原点とするCSS pxで表します。Browser Providerは、`innerWidth`と`innerHeight`からレイアウトビューポートの寸法を読み取ります。
 
-Visual Viewport は、ページのうち現在見えている範囲です。ズームやパン、キーボードの表示によって、その寸法や位置が変わることがあります。そのため、単位が同じ CSS px であっても、原点や座標系まで同じとは限りません。
+Visual Viewportは、ページのうち現在見えている範囲です。ズームやパン、キーボードの表示によって、大きさや位置が変わります。単位が同じCSS pxでも、レイアウトビューポートと原点や座標系が一致するとは限りません。
 
-Folyx は、矩形の境界に加えて座標系も確認します。寸法の比率や `devicePixelRatio`、`visualViewport.scale` から補正を推測せず、取得した値のスケールを保ちます。
+Folyxは、矩形が範囲内に収まるかだけでなく、座標系も確認します。寸法の比率、`devicePixelRatio`、`visualViewport.scale`から補正値を推測することはせず、取得した値のスケールを保ちます。
 
-## 0.1でのBrowserの取得方針 [#policy]
+<DocDiagram kind="coordinates" locale="ja" />
 
-初期版では、レイアウトと Visual Viewport が一致する場合に、座標を変換せずそのまま使います。確認する条件は次のとおりです。
+## バージョン0.1で扱えるブラウザの計測値 [#policy]
 
-- Visual Viewport の scale が1であること。
-- `offsetLeft` と `offsetTop` が0であること。
+バージョン0.1では、レイアウトビューポートとVisual Viewportが一致する場合に、座標を変換せずに使います。次の条件をすべて確認します。
+
+- Visual Viewportのscaleが1であること。
+- `offsetLeft`と`offsetTop`が0であること。
 - 寸法の差が、ブラウザの丸めを考慮して1 CSS px以内であること。
 
-矩形の境界は、これとは別に整合性を確認します。矩形が収まることだけを座標系の根拠にすることはなく、値の切り取りや数値の補正も行いません。
+矩形の境界については、これとは別に整合性を確認します。矩形が範囲内に収まるという理由だけで、座標系が一致すると判断することはありません。矩形の切り取りや数値の補正も行いません。
 
-Visual Viewport を取得できない場合や、ズーム・キーボードなどで座標系が異なる場合、Browser Provider は生の矩形を公開状態へ渡しません。レイアウトの viewport が既知なら、その全体を1つのフォールバック領域として返します。viewport も不明なら、領域は空配列になります。生の領域を読み取れた場合のAPI availability は、`available` のままです。
+Visual Viewportを取得できない場合や、ズーム・キーボード表示などで座標系が異なる場合、Browser Providerは生の矩形を公開状態へ渡しません。レイアウトビューポートの寸法が既知なら、その全体を1つのフォールバック領域として返します。viewportも不明なら、領域は空配列になります。APIから生の領域を読み取れていれば、availabilityは`available`のままです。
 
-0.1で対応しているのは、座標を変換せずに使える場合だけです。それ以外の座標変換は、まだ有効にしていません。Pixel 10 Pro Fold での動作も、実機では未確認です。端末名やUA文字列は、座標の変換規則には使いません。
+バージョン0.1が対応するのは、座標を変換せずに使える場合だけです。それ以外の座標変換は未対応です。Pixel 10 Pro Foldでの実機検証もまだ行っていません。端末名やUA文字列を使って座標の変換規則を決めることはありません。
 
 ## 変化を追い、計測値を比べる [#diagnosis]
 
-Browser Provider は、window の resize、姿勢変更、画面回転、ページの復帰、visibilitychange、Visual Viewport の resize/scroll を監視します。Visual Viewport の計測値は、公開 snapshot には追加しません。
+Browser Providerは、windowのresize、姿勢の変更、画面の回転、ページの復帰、visibilitychange、Visual Viewportのresize/scrollを監視します。Visual Viewportの計測値は、公開するsnapshotには含めません。
 
-詳しく確かめたいときは、FoldLab でブラウザの生値と公開 snapshot を並べて記録できます。元の値を比較用に残しながら、Core ではレイアウト座標を扱えるようにしています。CSS の `env(viewport-segment-*)` も FoldLab での比較に使いますが、Core の取得経路には含めていません。
+計測値を調べるには、FoldLabを使います。ブラウザの生の値と公開snapshotを並べて記録できるため、元の値を残したまま比較できます。CSSの`env(viewport-segment-*)`もFoldLabでの比較に使いますが、Coreの情報源には含めていません。
 
-Browser Provider が使うのは、現行の `navigator.devicePosture` と `window.viewport.segments` です。旧 `visualViewport.segments` や `getWindowSegments` には対応していません。APIの検出とフォールバックにより、同じ利用コードを各ブラウザで動かせます。取得できる計測値は、それぞれのブラウザの対応状況によって変わります。
+Browser Providerが使うのは、`navigator.devicePosture`と`window.viewport.segments`です。旧APIの`visualViewport.segments`や`getWindowSegments`には対応していません。APIの検出とフォールバックによって、同じアプリのコードを各ブラウザで動かせます。取得できる情報は、ブラウザのAPI対応状況によって異なります。
 
-APIや座標系についてもう少し知りたいときは、[参考資料](/references)もご覧ください。
+APIや座標系の詳細は、[参考資料](/references)を参照してください。

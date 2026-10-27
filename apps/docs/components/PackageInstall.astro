@@ -1,0 +1,76 @@
+---
+import Tabs from "blume/components/content/Tabs.astro";
+import Tab from "blume/components/content/Tab.astro";
+import data from "blume:data";
+import { highlightCode } from "blume/markdown";
+import { installCommand, packageManagers } from "./content.ts";
+
+interface Props { packages: readonly string[] }
+const { packages } = Astro.props;
+// Code-only panels need a direct <pre> child for Blume's flush frame and shared copy action.
+const commands = await Promise.all(packageManagers.map(async (manager) => ({
+  manager,
+  html: await highlightCode(installCommand(manager, packages), "sh", {
+    themes: data.config.codeThemes,
+  }),
+})));
+---
+
+<folyx-package-install class="block" data-package-install>
+  <Tabs hash={false} syncKey="folyx-install">
+    {commands.map(({ manager, html }) => (
+      <Tab title={manager}>
+        <Fragment set:html={html} />
+      </Tab>
+    ))}
+  </Tabs>
+</folyx-package-install>
+
+<script>
+  import { packageManagers, type PackageManager } from "./content.ts";
+
+  const storageKey = "folyx:package-manager";
+  let preference: PackageManager = "npm";
+  const isManager = (value: unknown): value is PackageManager =>
+    packageManagers.some((manager) => manager === value);
+
+  interface InstallTabs extends HTMLElement {
+    activateByTitle(title: string, sync: boolean): void;
+  }
+
+  class PackageInstall extends HTMLElement {
+    connectedCallback() {
+      document.addEventListener("blume-tabs-change", this.onChange);
+      // Wait for Blume to build its accessible tabs before restoring a choice.
+      void customElements.whenDefined("blume-tabs").then(() => {
+        if (!this.isConnected) return;
+        try {
+          const saved = localStorage.getItem(storageKey);
+          if (isManager(saved)) preference = saved;
+        } catch {
+          // In-memory preferences still work when storage is blocked.
+        }
+        this.querySelector<InstallTabs>("blume-tabs")?.activateByTitle(preference, false);
+      });
+    }
+
+    disconnectedCallback() {
+      document.removeEventListener("blume-tabs-change", this.onChange);
+    }
+
+    private onChange = (event: Event) => {
+      const { key, title } = (event as CustomEvent<{ key?: string; title?: unknown }>).detail;
+      if (key !== "folyx-install" || !isManager(title)) return;
+      preference = title;
+      try {
+        localStorage.setItem(storageKey, title);
+      } catch {
+        // Choosing a command must not depend on access to persistent storage.
+      }
+    };
+  }
+
+  if (!customElements.get("folyx-package-install")) {
+    customElements.define("folyx-package-install", PackageInstall);
+  }
+</script>

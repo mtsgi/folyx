@@ -24,7 +24,7 @@ dist-ssr
 
 .blume/
 .astro/
-playwright-report/
+# Retain local results from previous browser test runs.
 test-results/
 .pages/
 *.tsbuildinfo

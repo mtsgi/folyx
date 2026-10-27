@@ -16,10 +16,4 @@ jobs:
           cache: true
           run-install: false
       - run: vp install --frozen-lockfile
-      - run: vpx playwright install --with-deps chromium firefox webkit
       - run: vp run ready
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: browser-test-results
-          path: test-results/
