@@ -1,0 +1,26 @@
+{
+  "files": {
+    "docs/coordinates.mdx": {
+      "ja": "9083bec7fc7a1c21"
+    },
+    "docs/core.mdx": {
+      "ja": "7837235ca677fcc3"
+    },
+    "docs/index.mdx": {
+      "ja": "f2449623afac0bae"
+    },
+    "docs/philosophy.mdx": {
+      "ja": "80be97605079f4d6"
+    },
+    "docs/providers.mdx": {
+      "ja": "d21e344255239858"
+    },
+    "docs/references.mdx": {
+      "ja": "1360734cce613f06"
+    },
+    "docs/vue.mdx": {
+      "ja": "c2b349ce4b720843"
+    }
+  },
+  "version": 1
+}

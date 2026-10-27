@@ -1,0 +1,28 @@
+---
+title: Design philosophy
+description: Why Folyx keeps state clear, the API small, and layout choices in your hands.
+---
+
+## Knowing where a value comes from [#facts]
+
+A foldable screen can offer several ways to arrange an interface. Folyx helps by describing the information available to your app and making its source clear.
+
+Some values come from observations: posture, for example, is reported by the selected Provider. Others are worked out from the regions, such as their layout and the gaps between them. A fallback region has a different purpose again: it gives an app a way to keep rendering when measurements aren't usable.
+
+That distinction matters when a snapshot contains one region. It may be a browser measurement or a fallback covering the viewport. `source` tells you which one you're using, while `availability` describes whether the API could provide information. A single fallback region doesn't tell you how many physical screens a device has or whether it can fold.
+
+An `unknown` value is useful too. It lets an app make its own choice with a clear view of what's known. Folyx keeps `unknown`, `null`, and fallback states visible instead of filling them with guessed dimensions, hinge angles, or posture.
+
+## Leaving room for your interface [#geometry]
+
+Folyx describes regions and their arrangement. Your app decides how to use them, whether that's a reading view, a list and its details, or something else. A gap describes space between regions; it may not represent a physical hinge or a measured area of occlusion.
+
+The shared layout coordinate frame makes it possible to use Browser, Mock, and custom Providers with the same application code. The part of the page currently visible is a separate piece of information, so zooming or opening a keyboard doesn't silently change what a public coordinate means.
+
+## Keeping the pieces small [#thin-core]
+
+`getSnapshot()` reads state, and `subscribe()` follows it. Subscriptions look after the resources they need. The Vue adapter connects that state to component lifecycles, while FoldLab provides a place to record, compare, and explore measurements.
+
+Keeping these responsibilities together in small pieces makes them easier to test. Core stays independent of frameworks and doesn't manipulate CSS, collect telemetry, store history, or maintain a device-specific lookup table. Immutable snapshots help make changes easy to follow and tests repeatable.
+
+The state model also leaves room for new devices. A posture Folyx doesn't recognize can be represented as `unknown`, and a new arrangement can be represented as `complex` while its regions remain available to the app.

@@ -1,0 +1,31 @@
+---
+title: Folyx
+description: A small TypeScript library for working with foldable screens.
+---
+
+Foldable screens can give an app more than one region to work with. Folyx brings the screen's posture, regions, and layout together in a small TypeScript API, so you can decide how your interface should use that space.
+
+You can use Folyx with or without a framework. Here's a first example:
+
+```sh
+npm install @folyx/core
+```
+
+```ts
+import { createFolyx } from "@folyx/core";
+const folyx = createFolyx();
+const unsubscribe = folyx.subscribe((state) => {
+  console.log(state.posture.value, state.layout, state.segments.items);
+  console.log(state.availability, state.segments.source);
+});
+const current = folyx.getSnapshot();
+unsubscribe();
+```
+
+The final `unsubscribe()` ends the subscription. In an app, call it when you no longer need to follow changes.
+
+Each snapshot describes the state at the time it was read. When some information isn't available, Folyx makes that visible and provides a fallback where it can.
+
+For more detail, head to the [Core API](/core) or the [Vue guide](/vue). If you want to try a few screen shapes without a foldable device, [Mock Provider](/providers) is a good place to start. The [design philosophy](/philosophy) explains how these pieces fit together.
+
+The current version is **0.1.0**. See [coordinates and compatibility](/coordinates) for supported coordinate mappings and the fallback behavior you can expect.

@@ -1,0 +1,31 @@
+---
+title: Folyx
+description: 折りたたみ画面の状態を、小さなAPIで扱うためのTypeScriptライブラリ。
+---
+
+折りたたみ画面では、アプリが使える領域がいくつかに分かれることがあります。Folyx は、画面の折りたたみ状態や表示領域、その並び方をまとめて受け取り、UIづくりに使えるようにする TypeScript ライブラリです。
+
+フレームワークを使うアプリでも、素の TypeScript でも利用できます。まずは、状態を読み取るところから始めてみましょう。
+
+```sh
+npm install @folyx/core
+```
+
+```ts
+import { createFolyx } from "@folyx/core";
+const folyx = createFolyx();
+const unsubscribe = folyx.subscribe((state) => {
+  console.log(state.posture.value, state.layout, state.segments.items);
+  console.log(state.availability, state.segments.source);
+});
+const current = folyx.getSnapshot();
+unsubscribe();
+```
+
+最後の `unsubscribe()` は、購読を終えるための呼び出しです。アプリでは、状態の監視が不要になったタイミングで呼びます。
+
+snapshot は、読み取った時点の状態をまとめたオブジェクトです。ブラウザから情報を取得できないときも、そのことがわかる形で値を返し、わかっている範囲でフォールバックを用意します。
+
+詳しい使い方は [Core API](/core)、Vue との連携は [Vueガイド](/vue)で紹介しています。実機を使わずに画面の形を試したいときは、[Mock Provider](/providers)が便利です。それぞれの役割や値の考え方は、[設計思想](/philosophy)にまとめています。
+
+現在のバージョンは **0.1.0** です。対応している座標系やフォールバックの動きは、[座標系と互換性](/coordinates)で紹介しています。

@@ -1,0 +1,60 @@
+---
+title: Providers and Mock
+description: Try screen shapes with Mock, or connect another source of viewport information.
+---
+
+A Provider supplies posture and viewport readings to Folyx. Browser measurements, Mock values, and custom integrations all use the same interface.
+
+## Trying a screen shape with Mock [#mock]
+
+Mock Provider is useful when you're building a layout or writing a test without a foldable device nearby. It uses the same interface as Browser Provider, and you can change its state as your app runs.
+
+```ts
+import { createFolyx, createMockProvider } from "@folyx/core";
+const mock = createMockProvider({
+  posture: "folded",
+  viewport: { width: 900, height: 600 },
+  segments: [
+    { x: 0, y: 0, width: 440, height: 600 },
+    { x: 460, y: 0, width: 440, height: 600 },
+  ],
+});
+const folyx = createFolyx({ provider: mock });
+mock.set({ posture: "continuous" });
+mock.set({ availability: { segments: "unsupported" } });
+```
+
+`set(patch)` updates the fields you supply and keeps the rest. A supplied viewport or segment list replaces the previous one, and inputs are copied so later edits to your objects won't change the Provider's state.
+
+Supplying a posture or non-null segments makes that observation `available` unless you set availability explicitly. By default, `segments: null` means `unavailable`; use `unsupported` when you'd like to model a browser without the API.
+
+You can also model a readable API whose geometry can't be mapped. Set `availability.segments: "available"` together with `segments: null`, and Core will return a fallback while keeping the API available.
+
+When an API moves away from `available`, Mock clears its observation. Include a new value when you make it available again, so an older reading doesn't return unexpectedly. Empty available segment arrays, non-finite numbers, and dimensions that aren't positive cause the whole patch to be rejected, leaving the previous state in place.
+
+Overlapping regions and regions outside the viewport are allowed for experiments. They let you explore how an app handles `complex` geometry without changing the normal validation rules for numbers and dimensions.
+
+## Connecting your own Provider [#custom]
+
+A custom Provider can connect Folyx to another source of information. It needs a synchronous `getSnapshot()` method and a `subscribe(listener)` method that returns an unsubscribe function.
+
+Here's a minimal example with a fixed reading:
+
+```ts
+import type { FolyxProvider, ProviderSnapshot } from "@folyx/core";
+const reading: ProviderSnapshot = {
+  source: "provider",
+  availability: { posture: "unsupported", segments: "unavailable" },
+  posture: "unknown",
+  viewport: { width: 800, height: 600 },
+  segments: null,
+};
+const provider: FolyxProvider = {
+  getSnapshot: () => reading,
+  subscribe: () => () => {}, // Replace with change events for a dynamic source.
+};
+```
+
+Provider subscriptions report changes only; Core takes care of the initial notification. For a changing source, subscriptions should send current readings and release their own listeners when unsubscribed.
+
+The segments a Provider supplies need to be in Folyx's [layout coordinate frame](/coordinates). If the API can be read but its coordinates can't be mapped safely, keep availability `available` and return `null` for segments. Core will supply the fallback. Raw coordinates for diagnosis can stay alongside your Provider rather than entering the public layout state.

@@ -1,0 +1,51 @@
+---
+title: VueとSSR
+description: Folyxの状態を、Vueのリアクティビティとライフサイクルにつなぎます。
+---
+
+`useFolyx()` は、Core の snapshot を Vue のリアクティビティにつなぐための関数です。パッケージを追加し、コンポーネントの setup 内で呼び出します。
+
+```sh
+npm install @folyx/core @folyx/vue vue
+```
+
+```vue
+<script setup lang="ts">
+import { useFolyx } from "@folyx/vue";
+const { posture, layout, segments, snapshot } = useFolyx();
+</script>
+
+<template>
+  <main>
+    <p>{{ posture }} / {{ layout }}</p>
+    <p>{{ segments.length }} regions</p>
+    <p>{{ snapshot.availability.segments }}</p>
+  </main>
+</template>
+```
+
+posture・layout・segments・viewport・gaps・snapshot を、読み取り専用の computed ref で受け取れます。snapshot の保持には `shallowRef` を使い、不変のデータを小さな接続で Vue に渡しています。Vue 3.5以降で利用できます。
+
+## インスタンスを共有する [#sharing]
+
+引数なしの `useFolyx()` は、呼び出しごとに Core のインスタンスを作ります。`useFolyx({ provider })` で Provider を指定したり、`useFolyx({ folyx })` で既存のインスタンスを共有したりできます。
+
+```ts
+const folyx = createFolyx({ provider: mock });
+// 各コンポーネントのsetup内:
+const state = useFolyx({ folyx });
+```
+
+引数なし、または Provider を指定した場合は、Composable が自身の Core インスタンスと購読を管理します。外部から渡した Provider の所有者は呼び出し元のままで、Vue 側では破棄しません。
+
+Folyx のインスタンスを共有した場合、各コンポーネントが管理するのは、自分で始めた購読だけです。1つのコンポーネントが終了しても、兄弟コンポーネントや呼び出し元への通知は続きます。共有インスタンス自体の管理は、呼び出し元が担当します。指定する場合は、`provider` と `folyx` のどちらか一方を渡します。
+
+## サーバーとクライアントで、同じ状態から始める [#hydration]
+
+SSRとクライアントの初回描画は、常に同じ状態から始まります。姿勢と layout は `unknown`、APIは `unavailable`、viewport は `null`、領域は空配列です。共有インスタンスがすでに値を持っている場合も同じです。SSR中は、そのインスタンスを読み取ったり購読したりしません。
+
+mount 後に購読を始め、その時点の最新値をすぐに受け取ります。setup から mount までのあいだに状態が変わっていても、その値が反映されます。scope の終了時は自身の購読を解除し、解除処理が重なっても安全に扱います。mount されなかったコンポーネントは、購読を始めません。
+
+SSRでインスタンスを共有するときは、リクエストごとに生成します。こうすることで、利用者どうしの状態を分けて扱えます。Core の寿命は購読と参照によって管理されるため、追加で呼ぶ destroy メソッドはありません。
+
+ライフサイクルやリクエスト間の分離については、[Vue SSRガイド](https://vuejs.org/guide/scaling-up/ssr)でも詳しく紹介されています。

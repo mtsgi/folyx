@@ -1,0 +1,42 @@
+{
+  "name": "@folyx/vue",
+  "version": "0.1.0",
+  "description": "Vue lifecycle and reactivity bindings for Folyx.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@folyx/core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "~6.0.3",
+    "vite-plus": "1.4.0",
+    "vue": "^3.5.44"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  }
+}

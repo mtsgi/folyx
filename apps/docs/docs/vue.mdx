@@ -1,0 +1,51 @@
+---
+title: Vue and SSR
+description: Bring Folyx state into Vue, with lifecycle and SSR behavior handled for you.
+---
+
+`useFolyx()` connects Core snapshots to Vue's reactivity. Add the packages, then call it from a component's setup:
+
+```sh
+npm install @folyx/core @folyx/vue vue
+```
+
+```vue
+<script setup lang="ts">
+import { useFolyx } from "@folyx/vue";
+const { posture, layout, segments, snapshot } = useFolyx();
+</script>
+
+<template>
+  <main>
+    <p>{{ posture }} / {{ layout }}</p>
+    <p>{{ segments.length }} regions</p>
+    <p>{{ snapshot.availability.segments }}</p>
+  </main>
+</template>
+```
+
+You'll receive readonly computed refs for posture, layout, segments, viewport, gaps, and the full snapshot. The snapshot is held in a `shallowRef`, keeping the connection to Vue small while the snapshot itself stays immutable. The adapter supports Vue 3.5 and newer.
+
+## Sharing an instance [#sharing]
+
+By default, each `useFolyx()` call creates its own Core instance. You can pass a Provider with `useFolyx({ provider })`, or share an existing instance with `useFolyx({ folyx })`:
+
+```ts
+const folyx = createFolyx({ provider: mock });
+// In each component's setup:
+const state = useFolyx({ folyx });
+```
+
+With the default call or a supplied Provider, the composable manages its own Core instance and subscription. A supplied Provider stays owned by the caller and isn't disposed by Vue.
+
+With a shared Folyx instance, each component manages only the subscription it creates. When one component leaves, its siblings and the caller's subscriptions keep receiving updates. The caller continues to own the shared instance. Choose either `provider` or `folyx` for a call; they can't be supplied together.
+
+## Starting with the same state on server and client [#hydration]
+
+The server render and the first client render always start with the same state: unknown posture and layout, unavailable APIs, a null viewport, and no regions. This also applies when a shared instance already has observations. During SSR, the composable doesn't read from or subscribe to that instance.
+
+On mount, it subscribes and immediately receives the latest state, including changes that happened between setup and mount. On scope disposal, it releases its subscription safely, even if cleanup is called again. A component that never mounts doesn't acquire a subscription.
+
+For SSR, create shared instances per request so one visitor's state stays separate from another's. Core's lifetime follows its subscriptions and references; there is no additional destroy method to call.
+
+The [Vue SSR guide](https://vuejs.org/guide/scaling-up/ssr) has more background on lifecycle hooks and request isolation.

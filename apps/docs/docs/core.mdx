@@ -1,0 +1,59 @@
+---
+title: Core API
+description: How to read state, follow changes, and understand the values you receive.
+---
+
+## Creating an instance and reading state [#snapshots]
+
+Start with `createFolyx()`. It uses Browser Provider to read the information available in the current browser. If you're using Mock or a custom Provider, pass it as `createFolyx({ provider })`.
+
+The returned instance has two methods: `getSnapshot()` reads the current state, and `subscribe(listener)` lets you follow changes. Each instance is independent, and Core works without Vue or another framework.
+
+A snapshot is a deeply frozen, readonly object. Its reference stays the same while its values, source, and availability are unchanged, which also makes it useful for checking whether state has changed. The public types use plain objects, so your code doesn't need DOMRect or other browser-specific types.
+
+| Field            | What it tells you                                                                                     |
+| ---------------- | ----------------------------------------------------------------------------------------------------- |
+| `posture.value`  | The reported posture: `continuous`, `folded`, or `unknown`                                            |
+| `viewport.value` | The layout viewport's width and height in CSS px, or `null` when unknown                              |
+| `segments.items` | The regions in layout coordinates; this is always an array                                            |
+| `layout`         | Their arrangement: `single`, `horizontal`, `vertical`, `complex`, or `unknown`                        |
+| `gaps`           | The spaces between aligned regions, `[]` when there are none, or `null` when they can't be determined |
+| `availability`   | Whether the posture and segments APIs can currently provide information                               |
+
+For layout, `horizontal` means regions with a matching top edge and height, arranged side by side. `vertical` means matching left edges and widths, arranged top to bottom. These names describe the regions rather than the hinge. Regions are sorted by y, then x, and their count isn't limited to two. Mock regions that overlap, extend beyond the viewport, or don't align use `complex`.
+
+## Understanding availability and source [#availability]
+
+There are two useful questions to ask about a value: could the API provide information, and where did the value you're using come from?
+
+`availability` answers the first question for posture and segments separately:
+
+| Availability  | Meaning                                                                                                                                      |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `available`   | The API supplied a current observation                                                                                                       |
+| `unsupported` | The browser doesn't implement the API                                                                                                        |
+| `unavailable` | A current observation isn't available, for example during SSR, after a read failure, or when the API returns `null` for an inactive document |
+
+`posture.source`, `viewport.source`, and `segments.source` answer the second question. Their values are `browser`, `mock`, `provider`, `fallback`, or `unknown`.
+
+For example, the browser may return segments whose coordinates can't yet be mapped safely. In that case, `availability.segments` remains `available`, while `segments.source` becomes `fallback`. You can see both that the API responded and that Folyx is using a replacement region.
+
+If an API reports a posture Folyx doesn't recognize, the value becomes `unknown` and availability stays `available`. Region count is handled separately; it isn't used to guess posture.
+
+## Reading state and following changes [#notifications]
+
+`getSnapshot()` reads the latest state synchronously. It doesn't notify subscribers. `subscribe()` sends the current state synchronously once, then follows changes. Its return value is an unsubscribe function, which is safe to call more than once.
+
+Mock updates notify synchronously. Browser events are gathered into a requestAnimationFrame update so several events can produce one notification with the latest state.
+
+You can still call `getSnapshot()` while a frame is pending. That read won't consume the notifications existing subscribers are waiting for. Each subscription remembers its last delivery, so a subscriber added during that interval won't receive the same state twice. Intermediate Browser states may be combined; the latest state is the one subscribers receive.
+
+When the last subscriber leaves, Folyx removes its native listeners and cancels pending frame work. Subscribing again starts with a fresh read and leaves callbacks from the previous monitoring period behind. Unsubscribing one consumer keeps the others running.
+
+## SSR and fallback values [#ssr]
+
+You can import, create, read, and subscribe to Folyx in an environment without `window` or `navigator`.
+
+During SSR, both APIs are `unavailable`, posture and layout are `unknown`, viewport is `null`, and the region list is empty. Once the viewport dimensions are known, Folyx can provide one region covering that viewport if segments aren't usable. This lets an app keep rendering with the information it has, without filling in dimensions it doesn't know.
+
+Subscriptions manage the resources they use, so there is no separate destroy method or global instance to manage.

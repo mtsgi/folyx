@@ -1,0 +1,34 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag (for example v0.1.0)
+        required: true
+        type: string
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      FOLYX_RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.tag }}
+      - name: Verify tag points at this checkout
+        run: test "$(git describe --tags --exact-match)" = "$FOLYX_RELEASE_TAG"
+      - uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          cache: true
+          run-install: false
+      - run: vp install --frozen-lockfile
+      - run: vp run release:prepare
+      - run: vpx playwright install --with-deps chromium firefox webkit
+      - run: vp run ready
+      - run: vp run release:publish

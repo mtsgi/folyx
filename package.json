@@ -1,0 +1,51 @@
+{
+  "name": "folyx",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vp run foldlab#dev",
+    "dev:docs": "vp run docs#dev",
+    "build": "vp run -r build",
+    "test:e2e": "vp run build:pages && vp run test:browser",
+    "test:package": "vpx scripts/verify-packages.ts",
+    "build:pages": "vp run -r build && vp run pages:merge",
+    "ready": "vp check && vp test && vp run docs#validate && vp run docs#translations:check && vp run build:pages && vp run test:pages && vp run test:browser && vp run test:package",
+    "prepare": "vp config",
+    "release:prepare": "vpx scripts/prepare-release.ts",
+    "release:publish": "vpx scripts/publish.ts",
+    "test:browser": "playwright test",
+    "pages:merge": "vpx scripts/build-pages.ts",
+    "test:pages": "vpx scripts/verify-pages.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
+    "@vue/server-renderer": "^3.5.44",
+    "happy-dom": "^21.0.4",
+    "typescript": "~6.0.3",
+    "vite-plus": "1.4.0"
+  },
+  "overrides": {
+    "@vercel/cli-config": {
+      "zod": "^4.6.6"
+    },
+    "path-to-regexp@6": "6.3.0",
+    "postcss-selector-parser@6": "6.1.5",
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.4.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "12.2.1",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}

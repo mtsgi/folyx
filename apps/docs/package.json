@@ -1,0 +1,17 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "blume dev",
+    "build": "vpx ../../scripts/build-docs.ts",
+    "preview": "blume preview",
+    "validate": "blume validate",
+    "translations:check": "blume translate --check",
+    "translations:adopt": "blume translate --codex"
+  },
+  "devDependencies": {
+    "blume": "2.1.0"
+  }
+}

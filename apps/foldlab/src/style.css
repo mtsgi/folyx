@@ -1,0 +1,595 @@
+/* Shared colors and native controls. */
+:root {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #24292f;
+  background: #f6f7f8;
+  font-size: 14px;
+  line-height: 1.5;
+  font-synthesis: none;
+  color-scheme: light;
+  --border: #dce0e5;
+  --muted: #606975;
+  --accent: #315f91;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a,
+summary {
+  cursor: pointer;
+}
+
+button,
+a,
+input,
+select,
+summary {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* One header for navigation, followed by the active workspace. */
+.app-shell {
+  max-width: 1280px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  color: inherit;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.mode-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-item {
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+}
+
+.nav-item:hover {
+  background: #eceff2;
+}
+
+.nav-item.selected {
+  border-color: var(--border);
+  background: #fff;
+  color: #24292f;
+}
+
+.docs-link {
+  margin-left: auto;
+  font-size: 13px;
+}
+
+main {
+  padding: 24px 0 40px;
+}
+
+.page-heading {
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  align-items: start;
+  gap: 20px;
+}
+
+.panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.panel-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-heading h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.panel-heading > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mono,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+/* Layout geometry and its current source. */
+.canvas {
+  padding: 20px;
+}
+
+.viewport-svg {
+  display: block;
+  width: 100%;
+  height: 300px;
+  overflow: visible;
+}
+
+.viewport-outline {
+  fill: #fafbfc;
+  stroke: #a5adb7;
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.segment rect {
+  fill: #edf3fa;
+  stroke: #557ca5;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.segment text {
+  fill: #315f91;
+  font-family: ui-monospace, monospace;
+}
+
+.segment .segment-size {
+  fill: #606975;
+}
+
+.gap-rect {
+  fill: #e3e6ea;
+}
+
+.canvas-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.canvas-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.canvas-legend .mono {
+  margin-left: auto;
+}
+
+.legend-square,
+.legend-gap {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #557ca5;
+  background: #edf3fa;
+}
+
+.legend-gap {
+  border-color: #a5adb7;
+  background: #e3e6ea;
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+}
+
+.metric-strip > div {
+  padding: 12px;
+  border-right: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+
+.metric-strip > div:last-child {
+  border-right: 0;
+}
+
+.metric-strip span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metric-strip strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.empty-canvas {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  color: var(--muted);
+}
+
+/* Mock inputs and API availability. */
+.controls form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid #c7cdd5;
+  border-radius: 4px;
+  background: #fff;
+  color: #24292f;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+.form-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  font-weight: 400;
+}
+
+.checkbox-label input {
+  width: 15px;
+  min-height: 0;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.editor-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text-button {
+  padding: 3px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.rect-labels,
+.rect-inputs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) 24px;
+  gap: 6px;
+}
+
+.rect-labels {
+  margin-bottom: -8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.rect-inputs input {
+  padding: 6px;
+  font-size: 12px;
+}
+
+.rect-inputs button {
+  border: 0;
+  border-radius: 4px;
+  background: #f1f3f5;
+  color: var(--muted);
+}
+
+.primary-button,
+.secondary-button {
+  padding: 8px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.primary-button:hover {
+  background: #264e78;
+}
+
+.secondary-button {
+  border-color: #c7cdd5;
+  background: #fff;
+  color: #24292f;
+}
+
+.secondary-button:hover {
+  background: #f1f3f5;
+}
+
+.error {
+  margin: 0;
+  color: #a02c2c;
+  font-size: 13px;
+}
+
+.api-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  font-size: 13px;
+}
+
+.api-row + .api-row {
+  border-top: 1px solid var(--border);
+}
+
+.availability {
+  padding: 3px 6px;
+  border-radius: 3px;
+  background: #f1f3f5;
+  font:
+    12px ui-monospace,
+    monospace;
+}
+
+.notice {
+  margin: 16px;
+  padding: 12px;
+  border: 1px solid #e7d7ac;
+  border-radius: 4px;
+  background: #fff7e4;
+  color: #6b4b1d;
+  font-size: 13px;
+}
+
+/* Region data and the expandable snapshot. */
+.readings,
+.snapshot-panel,
+.diagnostic-panel {
+  margin-top: 20px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  font-size: 13px;
+}
+
+th {
+  border-bottom: 1px solid var(--border);
+  background: #fafbfc;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+tbody tr + tr {
+  border-top: 1px solid var(--border);
+}
+
+td small {
+  color: var(--muted);
+}
+
+summary {
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+summary:focus-visible {
+  outline-offset: -3px;
+}
+
+pre {
+  max-height: 480px;
+  overflow: auto;
+  margin: 0;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background: #fafbfc;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Local recording controls. */
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.diagnostic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 16px 16px;
+}
+
+.diagnostic-actions .mono,
+.help {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.help {
+  margin: 16px;
+}
+
+/* Stack panels and keep controls readable on smaller viewports. */
+@media (max-width: 960px) {
+  .workspace-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 0 16px;
+  }
+
+  .app-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .mode-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .nav-item {
+    flex: 1;
+  }
+
+  .docs-link {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  main {
+    padding-top: 20px;
+  }
+
+  .canvas {
+    padding: 16px;
+  }
+
+  .viewport-svg {
+    height: 230px;
+  }
+
+  .metric-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-strip > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .metric-strip > div:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .diagnostic-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  input,
+  select,
+  .rect-inputs input {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,36 @@
+---
+title: Coordinates and compatibility
+description: What the coordinates mean, and how Folyx handles values it cannot yet map.
+---
+
+## A shared coordinate frame [#contract]
+
+A coordinate is most useful when you know where it starts. In Folyx, viewport, segments, and gaps all use CSS px measured from the upper-left corner of the layout viewport. Browser Provider reads the layout dimensions from `innerWidth` and `innerHeight`.
+
+The visual viewport describes the part of the page currently in view. Its size and offset can change as someone zooms, pans, or opens the keyboard. Those changes are why a shared CSS px unit alone isn't enough to establish that two measurements have the same origin and coordinate frame.
+
+Folyx checks the frame as well as the rectangle bounds. It leaves the measurements at their reported scale rather than guessing a correction from size ratios, `devicePixelRatio`, or `visualViewport.scale`.
+
+## How version 0.1 handles Browser measurements [#policy]
+
+The initial version uses the identity mapping, meaning the rectangles are used without a coordinate conversion, when layout and visual frames coincide. It checks that:
+
+- Visual scale is 1.
+- The `offsetLeft` and `offsetTop` values are zero.
+- The dimensions agree within 1 CSS px, allowing for browser rounding.
+
+Rectangle bounds are checked separately for consistency. They aren't used on their own to establish the coordinate frame, and the values aren't clipped or numerically adjusted.
+
+If the visual viewport is unavailable or the frames differ, such as during zoom or a keyboard resize, Browser Provider keeps the raw segments out of the public state. A known layout viewport becomes one fallback region. If the viewport is also unknown, the region list stays empty. API availability remains `available` when the raw geometry could be read.
+
+Version 0.1 supports this identity mapping only; other coordinate transforms aren't enabled yet. Pixel 10 Pro Fold behavior hasn't been verified on hardware. Device names and UA strings aren't used as coordinate rules.
+
+## Following changes and comparing measurements [#diagnosis]
+
+Browser Provider follows window resize, posture change, screen orientation change, page restoration, visibility change, and visual viewport resize/scroll. Visual viewport measurements stay outside the public snapshot.
+
+For a closer look, FoldLab records raw browser measurements alongside the public snapshot. This keeps the original readings available for comparison while Core continues to provide layout coordinates. CSS `env(viewport-segment-*)` is included as an independent diagnostic comparison in FoldLab; it isn't a Core data source.
+
+The Browser Provider uses the current `navigator.devicePosture` and `window.viewport.segments` interfaces. Older interfaces such as `visualViewport.segments` and `getWindowSegments` aren't supported. Feature detection and fallback let the same application code run across browsers, while the measurements it can receive depend on each browser's API support.
+
+For more background on these APIs and coordinate concepts, see the [references](/references).

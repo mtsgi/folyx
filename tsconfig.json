@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@folyx/core": ["./packages/core/src/index.ts"],
+      "@folyx/vue": ["./packages/vue/src/index.ts"]
+    }
+  }
+}

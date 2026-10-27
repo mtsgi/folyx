@@ -1,0 +1,60 @@
+---
+title: ProviderとMock
+description: Mockで画面の形を試したり、独自の情報源をつないだりするには。
+---
+
+Provider は、Folyx に情報を渡す取得元の役割を担います。ブラウザから読み取る場合も、テスト用に値を用意する場合も、同じインターフェースで扱います。
+
+## Mockで画面の形を試す [#mock]
+
+Mock Provider は、折りたたみデバイスが手元にないときのUIづくりやテストに使えます。Browser Provider と同じインターフェースで扱え、アプリの実行中にも状態を変えられます。
+
+```ts
+import { createFolyx, createMockProvider } from "@folyx/core";
+const mock = createMockProvider({
+  posture: "folded",
+  viewport: { width: 900, height: 600 },
+  segments: [
+    { x: 0, y: 0, width: 440, height: 600 },
+    { x: 460, y: 0, width: 440, height: 600 },
+  ],
+});
+const folyx = createFolyx({ provider: mock });
+mock.set({ posture: "continuous" });
+mock.set({ availability: { segments: "unsupported" } });
+```
+
+`set(patch)` は、指定した項目を更新し、省略した項目をそのまま保ちます。viewport や segments を指定した場合は、その項目全体を置き換えます。入力はコピーされるので、渡したオブジェクトを後から編集しても Provider の状態は変わりません。
+
+姿勢や `null` 以外の領域を渡すと、availability を明示しない限り `available` になります。`segments: null` は既定で `unavailable` です。APIを持たないブラウザを試したい場合は、`unsupported` を指定できます。
+
+APIから読み取れても座標変換できない状態も再現できます。`availability.segments: "available"` と `segments: null` を組み合わせると、Core はAPIの状態を `available` に保ちながらフォールバックを返します。
+
+APIを `available` 以外へ切り替えると、その観測値をクリアします。再び `available` にするときは、新しい値も渡します。これにより、以前の値が意図せず戻ることを防ぎます。領域が `available` のときの空配列、`NaN` や `Infinity` のような有限でない数値、0以下の寸法はエラーになります。この場合、更新全体を見送り、変更前の状態を保ちます。
+
+実験用に、領域の重なりや viewport の範囲外にある領域は指定できます。数値や寸法の検証は保ったまま、`complex` な配置をアプリがどう扱うか試せます。
+
+## 独自のProviderをつなぐ [#custom]
+
+別の情報源と連携したい場合は、独自の Provider を用意できます。必要なのは、同期的に状態を返す `getSnapshot()` と、解除関数を返す `subscribe(listener)` です。
+
+固定の状態を返す最小の例は、次のようになります。
+
+```ts
+import type { FolyxProvider, ProviderSnapshot } from "@folyx/core";
+const reading: ProviderSnapshot = {
+  source: "provider",
+  availability: { posture: "unsupported", segments: "unavailable" },
+  posture: "unknown",
+  viewport: { width: 800, height: 600 },
+  segments: null,
+};
+const provider: FolyxProvider = {
+  getSnapshot: () => reading,
+  subscribe: () => () => {},
+};
+```
+
+Provider は変更だけを通知し、最初の通知は Core が担当します。状態が変わる情報源では、その時点の値を通知し、購読解除時に自身のリスナーを解放する形で実装します。
+
+Provider が返す segments は、Folyx の[レイアウト座標](/coordinates)に揃える必要があります。APIから取得できても安全に変換できない場合は、availability を `available` に保ち、segments に `null` を返します。フォールバックは Core に任せられます。診断用の生値は、公開するレイアウト状態とは別に記録できます。
