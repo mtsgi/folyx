@@ -1,7 +1,11 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
 import { createBrowserProvider, createFolyx } from "../src/index.ts";
+import type { FolyxSnapshot } from "../src/index.ts";
 import { toLayoutSegments } from "../src/coordinates.ts";
 import pixel10ProFold from "./fixtures/pixel-10-pro-fold-normal.json" with { type: "json" };
+import pixel10ProFoldSession from "./fixtures/pixel-10-pro-fold-2026-10-28.json" with { type: "json" };
+
+type RecordedRaw = (typeof pixel10ProFoldSession.samples)[number]["raw"];
 
 /** Minimal browser harness with manually controlled RAF and optional API readings. */
 class Browser extends EventTarget {
@@ -64,8 +68,8 @@ function setup() {
   return browser;
 }
 
-test.each(pixel10ProFold.samples)("maps the Pixel 10 Pro Fold sample at $time", ({ raw }) => {
-  const b = setup();
+/** Restore native readings without altering the recording or dispatching events. */
+function applyRaw(b: Browser, raw: RecordedRaw) {
   Object.assign(b, {
     innerWidth: raw.layout.width,
     innerHeight: raw.layout.height,
@@ -79,6 +83,19 @@ test.each(pixel10ProFold.samples)("maps the Pixel 10 Pro Fold sample at $time", 
   Object.assign(b.visualViewport, raw.visual);
   b.posture.type = raw.posture;
   b.viewport.segments = raw.segments;
+}
+
+/** Public snapshots must be frozen all the way down to their rectangle values. */
+function expectFrozen(value: unknown) {
+  if (typeof value !== "object" || value === null) return;
+
+  expect(Object.isFrozen(value)).toBe(true);
+  Object.values(value).forEach(expectFrozen);
+}
+
+test.each(pixel10ProFold.samples)("maps the Pixel 10 Pro Fold sample at $time", ({ raw }) => {
+  const b = setup();
+  applyRaw(b, raw);
   const original = structuredClone(raw);
   const provider = createBrowserProvider();
   const expected = [
@@ -105,6 +122,60 @@ test.each(pixel10ProFold.samples)("maps the Pixel 10 Pro Fold sample at $time", 
   expect(state.segments.items.every(Object.isFrozen)).toBe(true);
   expect(observation.segments?.[0]).not.toBe(raw.segments[0]);
   expect(raw).toEqual(original);
+});
+
+test.each(pixel10ProFoldSession.samples)(
+  "replays the verified Pixel 10 Pro Fold reading at $time",
+  ({ raw, snapshot }) => {
+    const b = setup();
+    const original = structuredClone(raw);
+    applyRaw(b, raw);
+    const state = createFolyx().getSnapshot();
+
+    expect(state).toEqual(snapshot);
+    expectFrozen(state);
+    expect(state.segments.items).not.toBe(raw.segments);
+    expect(state.segments.items[0]).not.toBe(raw.segments[0]);
+    expect(raw).toEqual(original);
+  },
+);
+
+test("replays recorded posture, zoom, pan, restoration, and viewport height changes for subscribers", () => {
+  const b = setup();
+  const original = structuredClone(pixel10ProFoldSession);
+  applyRaw(b, pixel10ProFoldSession.samples[0]!.raw);
+  const delivered: FolyxSnapshot[] = [];
+  const stop = createFolyx().subscribe((state) => {
+    delivered.push(state);
+  });
+
+  expect(delivered).toEqual([pixel10ProFoldSession.samples[0]!.snapshot]);
+
+  for (const { raw, events, snapshot } of pixel10ProFoldSession.samples.slice(1)) {
+    const layoutChanged = b.innerWidth !== raw.layout.width || b.innerHeight !== raw.layout.height;
+    applyRaw(b, raw);
+
+    if (layoutChanged) b.dispatchEvent(new Event("resize"));
+
+    // The recording's change event accompanies a posture change; resize/scroll
+    // events exercise visual viewport monitoring as the zoom and offsets change.
+    for (const event of events)
+      (event === "change" ? b.posture : b.visualViewport).dispatchEvent(new Event(event));
+
+    b.flush();
+
+    expect(delivered.at(-1)).toEqual(snapshot);
+  }
+
+  // Most zoom/pan frames share the same public fallback. Only these six states
+  // change, including restoration to two regions and the final 817px height.
+  expect(delivered).toEqual(
+    [0, 1, 2, 33, 34, 44].map((index) => pixel10ProFoldSession.samples[index]!.snapshot),
+  );
+  delivered.forEach(expectFrozen);
+  expect(pixel10ProFoldSession).toEqual(original);
+
+  stop();
 });
 
 test.each([

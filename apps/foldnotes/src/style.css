@@ -1,0 +1,166 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #242424;
+  background: #fff;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button,
+input,
+textarea {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+}
+button {
+  min-height: 44px;
+  cursor: pointer;
+}
+button[aria-pressed="true"],
+button[aria-current="true"] {
+  background: #eee;
+  border-color: #666;
+}
+
+.workspace,
+.preview-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100dvh;
+  overflow: hidden;
+  background: #fff;
+}
+.horizontal .workspace,
+.horizontal .preview-pane {
+  position: fixed;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+.toolbar strong {
+  margin-right: auto;
+}
+.save-status {
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+}
+.workspace-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+.notes {
+  display: none;
+  min-width: 0;
+  overflow: auto;
+  padding: 0.5rem;
+  border-right: 1px solid #ddd;
+}
+.notes.open {
+  display: block;
+}
+.notes.open + .document {
+  display: none;
+}
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.note-list button {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.document {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+.editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+.editor label {
+  font-size: 0.85rem;
+}
+.editor input,
+.editor textarea {
+  width: 100%;
+  min-width: 0;
+}
+.editor textarea {
+  flex: 1;
+  min-height: 10rem;
+  resize: none;
+  font-family: ui-monospace, monospace;
+}
+.markdown {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  padding: 1rem;
+}
+.markdown h1 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+.markdown pre {
+  overflow-x: auto;
+  padding: 0.75rem;
+  background: #f5f5f5;
+}
+.markdown img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  main:not(.horizontal) .workspace-content {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+  main:not(.horizontal) .notes {
+    display: block;
+  }
+  main:not(.horizontal) .notes.open + .document {
+    display: flex;
+  }
+  main:not(.horizontal) .notes-toggle {
+    display: none;
+  }
+}

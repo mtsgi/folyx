@@ -4,7 +4,7 @@ These contributor notes cover local development, site builds, and npm releases. 
 
 ## Working on the project
 
-The workspace uses Vite+ and npm. Start with `vp install`, then use `vp run dev` for FoldLab or `vp run dev:docs` for the documentation. Libraries are built with `vp pack` and include ESM, type declarations, and source maps.
+The workspace uses Vite+ and npm. Start with `vp install`, then use `vp run dev` for FoldLab, `vp run dev:foldnotes` for FoldNotes, or `vp run dev:docs` for the documentation. Libraries are built with `vp pack` and include ESM, type declarations, and source maps.
 
 Internal package dependencies use npm-compatible semver ranges, so the workspace doesn't need `workspace:*` references. Blume is currently pinned to 2.1.0 because the newer dependency set encountered npm peer-resolution cycling in this workspace. When updating that pin, check dependency resolution as well as the build. The workspace doesn't need a `legacy-peer-deps` setting.
 
@@ -14,7 +14,7 @@ English is the public documentation's source language, with Japanese pages under
 
 ## Publishing to GitHub Pages
 
-The Pages workflow builds the documentation and FoldLab separately, then brings their output into one artifact. The documentation sits at the site root, with FoldLab under `/foldlab/`.
+The Pages workflow builds the documentation, FoldLab, and FoldNotes separately, then brings their output into one artifact. The documentation sits at the site root, with FoldLab under `/foldlab/` and FoldNotes under `/foldnotes/`. Before upload, `vp run test:pages` checks the app routes, assets, and docs navigation links.
 
 `FOLYX_BASE` is the deployment pathname and `FOLYX_SITE` is the origin. Actions obtains both from `configure-pages`. Local Pages builds default to `/folyx/`, and the documentation dev server uses that path too.
 

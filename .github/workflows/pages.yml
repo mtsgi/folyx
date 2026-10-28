@@ -26,7 +26,10 @@ jobs:
       - run: vp run docs#translations:check
       - uses: actions/configure-pages@v5
         id: pages
-      - run: vp run build:pages
+      - name: Build and verify Pages
+        run: |
+          vp run build:pages
+          vp run test:pages
         env:
           FOLYX_SITE: ${{ steps.pages.outputs.origin }}
           FOLYX_BASE: ${{ steps.pages.outputs.base_path }}/

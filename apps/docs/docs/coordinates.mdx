@@ -27,7 +27,9 @@ For example, a Pixel 10 Pro Fold normal-display recording reports an 851 × 817 
 
 If the visual viewport is unavailable or the frames differ, such as during zoom or a keyboard resize, Browser Provider keeps the raw segments out of the public state. A known layout viewport becomes one fallback region. If the viewport is also unknown, the region list stays empty. API availability remains `available` when the raw geometry could be read.
 
-Version 0.1 supports coincident frames with this bounded rounding correction; other coordinate transforms aren't enabled yet. The Pixel 10 Pro Fold recording reproduces the original normal-display fallback in regression tests. Hardware confirmation of the fix, zoom, pan, keyboard behavior, rotation, and folding transitions remain pending. Device names and UA strings aren't used as coordinate rules.
+Version 0.1 supports coincident frames with this bounded rounding correction; other coordinate transforms aren't enabled yet. Device names and UA strings aren't used as coordinate rules.
+
+A Pixel 10 Pro Fold recording from October 28, 2026 confirms the fix on hardware. Its 46 samples cover normal display, a `continuous` to `folded` posture change, fallback during zoom and pan, and restoration to two regions at scale 1 with zero visual offsets. The last sample is still zoomed to about 1.00667, beyond the rounding budget, so it uses fallback. Regression tests replay every recorded snapshot. Keyboard behavior, rotation, and coverage of all folding states still need hardware verification.
 
 ## Following changes and comparing measurements [#diagnosis]
 

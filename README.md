@@ -2,11 +2,12 @@
 
 Folyx helps you work with foldable screens by bringing posture, viewport regions, and their layout into a small TypeScript API. You can see which values were observed, which came from a fallback, and which are still unknown.
 
-The workspace brings together four pieces:
+The workspace brings together five pieces:
 
 - **@folyx/core** reads state and follows changes through immutable snapshots. Browser and Mock Providers share the same interface, and Core has no runtime dependencies.
 - **@folyx/vue** connects those snapshots to Vue, including component cleanup, SSR, and shared instances.
 - **FoldLab** gives you a place to try screen shapes, inspect a browser, and record measurements for local JSON export.
+- **[FoldNotes](apps/foldnotes/README.md)** is a small Markdown notebook that adapts its editor and preview to viewport segments.
 - **docs** introduces the API and its design in English and Japanese, with guides for coordinates, Providers, and Vue.
 
 Here's a small Mock example you can try without a foldable device:
@@ -33,6 +34,7 @@ For local development, use Node >=22.19 and Vite+ (`vp`). The repository uses np
 vp install
 vp run dev          # FoldLab
 vp run dev:docs     # Blume
+vp run dev:foldnotes # FoldNotes
 vp check
 vp test
 vp run -r build
@@ -40,13 +42,13 @@ vp run docs#validate
 vp run test:package
 ```
 
-`vp run ready` runs the complete set of checks, tests, builds, translation and link validation, and npm-tarball consumption checks. Pages artifact validation checks static routes and references without running JavaScript. For another deployment, set `FOLYX_BASE` and `FOLYX_SITE`; `vp run build:pages` writes `.pages/` with documentation at the root and FoldLab under `foldlab/`.
+`vp run ready` runs the complete set of checks, tests, builds, translation and link validation, and npm-tarball consumption checks. Pages artifact validation checks static routes and references without running JavaScript. For another deployment, set `FOLYX_BASE` and `FOLYX_SITE`; `vp run build:pages` writes `.pages/` with documentation at the root, FoldLab under `foldlab/`, and FoldNotes under `foldnotes/`. The Pages workflow verifies this artifact before deploying it on pushes to `main` or manual dispatch.
 
 If you're new to Folyx, the [design guide](apps/docs/docs/philosophy.mdx) is a good place to start. You can then explore the [Core API](apps/docs/docs/core.mdx), [coordinates and current behavior](apps/docs/docs/coordinates.mdx), or [Vue sharing and cleanup](apps/docs/docs/vue.mdx). [日本語のドキュメント](apps/docs/docs/ja/index.mdx)もあります。
 
 For project contributors, the [maintainer notes](docs/maintainers/README.md) cover device measurements, development, builds, and publishing. These repository documents stay outside the public documentation site.
 
-Pixel 10 Pro Fold normal-display measurements exposed a near-unit visual scale and a one-CSS-pixel segment overflow. Browser Provider accepts coincident layout and visual frames within a one-CSS-pixel rounding budget and clamps overflowing segment edges to the layout viewport, preserving internal boundaries. Regression tests replay both supplied samples. Hardware confirmation of the fix and verification of zoom, pan, keyboard behavior, rotation, and folding transitions remain pending. Frames outside that budget still use one fallback region covering the known layout viewport, while API availability remains separate. Scale and DPR corrections aren't guessed.
+Pixel 10 Pro Fold recordings reproduce the original rounding failure and confirm the fix on hardware. Browser Provider accepts coincident layout and visual frames within a one-CSS-pixel rounding budget and clamps overflowing segment edges to the layout viewport, preserving internal boundaries. The 46-sample recording from October 28, 2026 covers normal display, a `continuous` to `folded` posture change, fallback during zoom and pan, and restoration to two regions at scale 1 with zero visual offsets. Readable API availability stays `available` during fallback. Keyboard behavior, rotation, and coverage of all folding states still need hardware verification. Scale and DPR corrections aren't guessed.
 
 GitHub Actions workflows are included for CI, Pages deployment, and manual same-version npm releases. Before the first publication, the scope access, initial package publication, per-package Trusted Publishers, and Pages settings need to be connected to your accounts. Local validation builds and checks the artifacts.
 

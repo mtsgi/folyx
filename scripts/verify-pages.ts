@@ -3,6 +3,7 @@ import { strict as assert } from "node:assert";
 import { readdir, readFile, stat } from "node:fs/promises";
 import { join, relative, resolve, sep } from "node:path";
 import { Window } from "happy-dom";
+import type { HTMLAnchorElement } from "happy-dom";
 
 const root = resolve(import.meta.dirname, "../.pages");
 const base = `${(process.env.FOLYX_BASE ?? "/folyx/").replace(/\/$/, "")}/`;
@@ -17,7 +18,7 @@ const guideDiagrams = {
   philosophy: "philosophy",
 } as const;
 
-/** Collect generated HTML pages, including locale routes and FoldLab. */
+/** Collect generated HTML pages, including locale routes and demo apps. */
 async function walk(dir: string) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
@@ -35,6 +36,7 @@ for (const path of [
     ),
   ),
   "foldlab/index.html",
+  "foldnotes/index.html",
   "blume-search.json",
 ])
   assert((await stat(join(root, path))).isFile(), `Missing Pages route: ${path}`);
@@ -58,7 +60,7 @@ for (const file of files) {
   dom.document.write(html);
 
   const route = relative(root, file).split(sep).join("/");
-  if (route !== "404.html" && !route.startsWith("foldlab/")) {
+  if (route !== "404.html" && !/^(foldlab|foldnotes)\//.test(route)) {
     const document = dom.document;
     const guide = route
       .replace(/^ja\//, "")
@@ -154,15 +156,30 @@ for (const file of files) {
       `Missing menu toggle on ${route}`,
     );
 
-    const foldlab = [...drawer.querySelectorAll("a")].find(
-      (link) => link.textContent?.trim() === "FoldLab",
-    );
-    assert(foldlab, `Missing FoldLab link in the navigation drawer on ${route}`);
-    assert.equal(
-      new URL(foldlab.getAttribute("href")!, page).href,
-      new URL(`${base}foldlab/`, origin).href,
-      `Incorrect FoldLab link on ${route}`,
-    );
+    for (const [name, slug] of [
+      ["FoldLab", "foldlab"],
+      ["FoldNotes", "foldnotes"],
+    ]) {
+      const expected = new URL(`${base}${slug}/`, origin).href;
+      const demoLink: HTMLAnchorElement | undefined = [...drawer.querySelectorAll("a")].find(
+        (element) => element.textContent?.trim() === name,
+      );
+      assert(demoLink, `Missing ${name} link in the navigation drawer on ${route}`);
+      assert.equal(
+        new URL(demoLink.getAttribute("href")!, page).href,
+        expected,
+        `Incorrect ${name} link on ${route}`,
+      );
+      const headerLink = [...document.querySelectorAll("[data-blume-header] a")].find(
+        (element) => element.textContent?.trim() === `${name} ↗`,
+      );
+      assert(headerLink, `Missing ${name} link in the header on ${route}`);
+      assert.equal(
+        new URL(headerLink.getAttribute("href")!, page).href,
+        expected,
+        `Incorrect ${name} header link on ${route}`,
+      );
+    }
   }
 
   const links = [...dom.document.querySelectorAll("[href], [src]")].flatMap((element) =>

@@ -7,6 +7,9 @@ const site =
 const foldlabHref = site
   ? new URL(`${base.replace(/\/$/, "")}/foldlab/`, site).href
   : "http://localhost:5173/";
+const foldnotesHref = site
+  ? new URL(`${base.replace(/\/$/, "")}/foldnotes/`, site).href
+  : "http://localhost:5174/";
 
 /** Public library documentation, with a shared deployment base and bilingual prose. */
 export default defineConfig({
@@ -46,9 +49,16 @@ export default defineConfig({
         label: "FoldLab ↗",
         href: foldlabHref,
       },
+      {
+        label: "FoldNotes ↗",
+        href: foldnotesHref,
+      },
     ],
     // Header actions are hidden on narrow screens; featured links also appear in the mobile drawer.
-    featured: [{ label: "FoldLab", href: foldlabHref }],
+    featured: [
+      { label: "FoldLab", href: foldlabHref },
+      { label: "FoldNotes", href: foldnotesHref },
+    ],
   },
   seo: { og: { enabled: false } },
 });

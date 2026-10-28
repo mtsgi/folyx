@@ -1,9 +1,11 @@
-import { defineConfig } from "vite-plus";
+import vue from "@vitejs/plugin-vue";
+import { defineConfig, lazyPlugins } from "vite-plus";
 
 /** Shared formatting, linting, unit tests, and task policy for the monorepo. */
 export default defineConfig({
+  plugins: lazyPlugins(() => [vue()]),
   test: {
-    include: ["packages/*/tests/**/*.test.ts"],
+    include: ["packages/*/tests/**/*.test.ts", "apps/foldnotes/tests/**/*.test.ts"],
     // Tests resolve source directly so a fresh checkout does not need dist files first.
     alias: {
       "@folyx/core": new URL("./packages/core/src/index.ts", import.meta.url).pathname,

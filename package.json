@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vp run foldlab#dev",
     "dev:docs": "vp run docs#dev",
+    "dev:foldnotes": "vp run foldnotes#dev",
     "build": "vp run -r build",
     "test:package": "vpx scripts/verify-packages.ts",
     "build:pages": "vp run -r build && vp run pages:merge",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^6.0.10",
     "@vue/server-renderer": "^3.5.44",
     "happy-dom": "^21.0.4",
     "typescript": "~6.0.3",

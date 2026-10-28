@@ -1,0 +1,4461 @@
+{
+  "schemaVersion": 1,
+  "folyxVersion": "0.1.0",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "notes": "",
+  "pixel10ProFoldVerified": false,
+  "dropped": 0,
+  "samples": [
+    {
+      "time": "2026-10-28T14:44:00.943Z",
+      "monotonicTime": 28637.10000000149,
+      "events": ["start"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 851.6923217773438,
+          "height": 720.4102783203125,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 852,
+            "height": 721
+          }
+        ],
+        "posture": "continuous",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 692.1025390625
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": []
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "continuous",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "browser"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:02.700Z",
+      "monotonicTime": 30390.10000000149,
+      "events": ["change"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 851.6923217773438,
+          "height": 720.4102783203125,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 692.1025390625
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 426,
+              "height": 720
+            },
+            {
+              "x": 426,
+              "y": 0,
+              "width": 425,
+              "height": 720
+            }
+          ],
+          "source": "browser"
+        },
+        "layout": "horizontal",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.001Z",
+      "monotonicTime": 32691.60000000149,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 805.6039428710938,
+          "height": 681.4260864257812,
+          "offsetLeft": 40.20512771606445,
+          "offsetTop": 13.538461685180664,
+          "scale": 1.0572097301483154
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.049Z",
+      "monotonicTime": 32739.80000000447,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 717.5493774414062,
+          "height": 606.9444580078125,
+          "offsetLeft": 116.5128173828125,
+          "offsetTop": 37.33333206176758,
+          "scale": 1.186945915222168
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.066Z",
+      "monotonicTime": 32756.5,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 693.9259033203125,
+          "height": 586.96240234375,
+          "offsetLeft": 137.025634765625,
+          "offsetTop": 42.25640869140625,
+          "scale": 1.2273533344268799
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.083Z",
+      "monotonicTime": 32772.90000000596,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 668.9769897460938,
+          "height": 565.859130859375,
+          "offsetLeft": 158.35897827148438,
+          "offsetTop": 48,
+          "scale": 1.273126482963562
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.100Z",
+      "monotonicTime": 32790.10000000149,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 645.1776123046875,
+          "height": 545.728271484375,
+          "offsetLeft": 178.87179565429688,
+          "offsetTop": 54.153846740722656,
+          "scale": 1.3200896978378296
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.116Z",
+      "monotonicTime": 32806.80000000447,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 625.9549560546875,
+          "height": 529.4686279296875,
+          "offsetLeft": 195.6923065185547,
+          "offsetTop": 58.66666793823242,
+          "scale": 1.3606287240982056
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.133Z",
+      "monotonicTime": 32823.60000000149,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 609.1322021484375,
+          "height": 515.239013671875,
+          "offsetLeft": 210.05128479003906,
+          "offsetTop": 61.9487190246582,
+          "scale": 1.3982059955596924
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.149Z",
+      "monotonicTime": 32839.80000000447,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 594.6571044921875,
+          "height": 502.9950866699219,
+          "offsetLeft": 222.35897827148438,
+          "offsetTop": 64.82051086425781,
+          "scale": 1.4322410821914673
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.166Z",
+      "monotonicTime": 32856.60000000149,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 583.369384765625,
+          "height": 493.44732666015625,
+          "offsetLeft": 231.7948760986328,
+          "offsetTop": 66.46154022216797,
+          "scale": 1.459953784942627
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.183Z",
+      "monotonicTime": 32872.90000000596,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 574.73486328125,
+          "height": 486.1437683105469,
+          "offsetLeft": 239.1794891357422,
+          "offsetTop": 67.69230651855469,
+          "scale": 1.4818872213363647
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.200Z",
+      "monotonicTime": 32890,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 569.0338745117188,
+          "height": 481.3215026855469,
+          "offsetLeft": 244.10256958007812,
+          "offsetTop": 68.5128173828125,
+          "scale": 1.4967340230941772
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.216Z",
+      "monotonicTime": 32906.70000000298,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 565.4532470703125,
+          "height": 478.2927551269531,
+          "offsetLeft": 247.38461303710938,
+          "offsetTop": 68.92308044433594,
+          "scale": 1.506211757659912
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.233Z",
+      "monotonicTime": 32923.40000000596,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 69.33333587646484,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.250Z",
+      "monotonicTime": 32940,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 68.92308044433594,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.275Z",
+      "monotonicTime": 32965.10000000149,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 68.5128173828125,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.291Z",
+      "monotonicTime": 32981.60000000149,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 68.1025619506836,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.525Z",
+      "monotonicTime": 33215,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 59.07692337036133,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.541Z",
+      "monotonicTime": 33231.70000000298,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 49.230770111083984,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.558Z",
+      "monotonicTime": 33248.60000000149,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 32.410255432128906,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.574Z",
+      "monotonicTime": 33264.80000000447,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 13.948718070983887,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.41025641560554504
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:05.591Z",
+      "monotonicTime": 33281.60000000149,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 0,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.075Z",
+      "monotonicTime": 33765.5,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 561.1442260742188,
+          "height": 474.6480407714844,
+          "offsetLeft": 251.07691955566406,
+          "offsetTop": 2.0512821674346924,
+          "scale": 1.5177778005599976
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.091Z",
+      "monotonicTime": 33781.70000000298,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 572.07763671875,
+          "height": 483.8960876464844,
+          "offsetLeft": 242.05128479003906,
+          "offsetTop": 0,
+          "scale": 1.488770604133606
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.108Z",
+      "monotonicTime": 33798.80000000447,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 581.1145629882812,
+          "height": 491.5400695800781,
+          "offsetLeft": 234.6666717529297,
+          "offsetTop": 0,
+          "scale": 1.46561861038208
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.125Z",
+      "monotonicTime": 33815.80000000447,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 595.2193603515625,
+          "height": 503.470703125,
+          "offsetLeft": 222.76922607421875,
+          "offsetTop": 0,
+          "scale": 1.430888056755066
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.141Z",
+      "monotonicTime": 33831.30000000447,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 618.202392578125,
+          "height": 522.9110717773438,
+          "offsetLeft": 203.4871826171875,
+          "offsetTop": 0,
+          "scale": 1.3776917457580566
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.158Z",
+      "monotonicTime": 33848.20000000298,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 642.8690795898438,
+          "height": 543.7755737304688,
+          "offsetLeft": 182.15383911132812,
+          "offsetTop": 0,
+          "scale": 1.3248300552368164
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.175Z",
+      "monotonicTime": 33865,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 675.0283203125,
+          "height": 570.977783203125,
+          "offsetLeft": 154.25640869140625,
+          "offsetTop": 0,
+          "scale": 1.2617133855819702
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.191Z",
+      "monotonicTime": 33881.70000000298,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 720.2227783203125,
+          "height": 609.2057495117188,
+          "offsetLeft": 114.05128479003906,
+          "offsetTop": 0,
+          "scale": 1.1825400590896606
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.208Z",
+      "monotonicTime": 33898.70000000298,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 772.933837890625,
+          "height": 653.7918090820312,
+          "offsetLeft": 66.46154022216797,
+          "offsetTop": 0,
+          "scale": 1.1018954515457153
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.224Z",
+      "monotonicTime": 33914.5,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.6033935546875,
+          "height": 716.1057739257812,
+          "offsetLeft": 1.2307692766189575,
+          "offsetTop": 0,
+          "scale": 1.0060110092163086
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.244Z",
+      "monotonicTime": 33934,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 851.6923217773438,
+          "height": 720.4102783203125,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0.8205128312110901
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 426,
+              "height": 720
+            },
+            {
+              "x": 426,
+              "y": 0,
+              "width": 425,
+              "height": 720
+            }
+          ],
+          "source": "browser"
+        },
+        "layout": "horizontal",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:06.476Z",
+      "monotonicTime": 34166.70000000298,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 715.636474609375,
+          "offsetLeft": 4.512820720672607,
+          "offsetTop": 1.6410256624221802,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 6.153846263885498
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.233Z",
+      "monotonicTime": 35923.30000000447,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 715.636474609375,
+          "offsetLeft": 4.512820720672607,
+          "offsetTop": 4.482916355133057,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 22.9743595123291
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.250Z",
+      "monotonicTime": 35939.90000000596,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 715.636474609375,
+          "offsetLeft": 3.2820513248443604,
+          "offsetTop": 4.482916355133057,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 75.8974380493164
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.267Z",
+      "monotonicTime": 35957.20000000298,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 715.636474609375,
+          "offsetLeft": 0,
+          "offsetTop": 4.482916355133057,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 182.15383911132812
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.283Z",
+      "monotonicTime": 35973.60000000149,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 718.1008911132812,
+          "offsetLeft": 0,
+          "offsetTop": 2.0512821674346924,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 245.3333282470703
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.299Z",
+      "monotonicTime": 35989.90000000596,
+      "events": ["resize", "scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 731.418212890625,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 234.25640869140625
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.316Z",
+      "monotonicTime": 36006.90000000596,
+      "events": ["resize"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 750.0134887695312,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 215.38461303710938
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.333Z",
+      "monotonicTime": 36023.5,
+      "events": ["resize"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 771.7807006835938,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 193.64102172851562
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.349Z",
+      "monotonicTime": 36039.70000000298,
+      "events": ["resize"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 795.8077392578125,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 169.84616088867188
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.367Z",
+      "monotonicTime": 36057.30000000447,
+      "events": ["resize"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 720,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 811.4078369140625,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 721
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 154.25640869140625
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "721px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 720
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 720
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:08.384Z",
+      "monotonicTime": 36074.40000000596,
+      "events": ["resize"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 817,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 811.4078369140625,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 817
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 817
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 154.25640869140625
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 817
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 817
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    },
+    {
+      "time": "2026-10-28T14:44:09.108Z",
+      "monotonicTime": 36798.5,
+      "events": ["scroll"],
+      "scenario": "normal",
+      "raw": {
+        "layout": {
+          "width": 851,
+          "height": 817,
+          "clientWidth": 851,
+          "clientHeight": 720
+        },
+        "visual": {
+          "width": 846.048583984375,
+          "height": 811.4078369140625,
+          "offsetLeft": 0,
+          "offsetTop": 5.29799222946167,
+          "scale": 1.0066707134246826
+        },
+        "segments": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 426,
+            "height": 817
+          },
+          {
+            "x": 426,
+            "y": 0,
+            "width": 426,
+            "height": 817
+          }
+        ],
+        "posture": "folded",
+        "orientation": {
+          "type": "portrait-primary",
+          "angle": 0
+        },
+        "scroll": {
+          "x": 0,
+          "y": 182.56410217285156
+        },
+        "devicePixelRatio": 2.4375,
+        "css": {
+          "probeRange": "4 x 4",
+          "items": [
+            {
+              "column": 0,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "0px",
+              "top": "0px"
+            },
+            {
+              "column": 1,
+              "row": 0,
+              "width": "426px",
+              "height": "817px",
+              "left": "426px",
+              "top": "0px"
+            }
+          ]
+        },
+        "interactiveWidget": "width=device-width, initial-scale=1.0"
+      },
+      "snapshot": {
+        "availability": {
+          "posture": "available",
+          "segments": "available"
+        },
+        "posture": {
+          "value": "folded",
+          "source": "browser"
+        },
+        "viewport": {
+          "value": {
+            "width": 851,
+            "height": 817
+          },
+          "source": "browser"
+        },
+        "segments": {
+          "items": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 851,
+              "height": 817
+            }
+          ],
+          "source": "fallback"
+        },
+        "layout": "single",
+        "gaps": []
+      }
+    }
+  ]
+}

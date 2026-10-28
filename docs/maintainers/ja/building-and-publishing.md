@@ -4,7 +4,7 @@
 
 ## 開発を始める
 
-このワークスペースでは、Vite+ と npm を使います。まず `vp install` で依存を揃え、FoldLab は `vp run dev`、ドキュメントは `vp run dev:docs` で起動できます。ライブラリは `vp pack` でビルドし、ESM・型定義・source map を配布します。
+このワークスペースでは、Vite+ と npm を使います。まず `vp install` で依存を揃え、FoldLab は `vp run dev`、FoldNotes は `vp run dev:foldnotes`、ドキュメントは `vp run dev:docs` で起動できます。ライブラリは `vp pack` でビルドし、ESM・型定義・source map を配布します。
 
 内部パッケージの依存には npm 互換の semver を使うため、`workspace:*` の指定は必要ありません。Blume は、新しい依存構成でnpmのpeer解決が循環したことから、現在は2.1.0に固定しています。更新するときは、ビルドとあわせて依存解決も確認します。このワークスペースでは `legacy-peer-deps` の設定は不要です。
 
@@ -14,7 +14,7 @@
 
 ## GitHub Pagesへ公開する
 
-Pages のワークフローは、ドキュメントと FoldLab を別々にビルドしてから、1つの配信物にまとめます。ドキュメントはサイトのルート、FoldLab は `/foldlab/` に配置します。
+Pages のワークフローは、ドキュメント、FoldLab、FoldNotes を別々にビルドしてから、1つの配信物にまとめます。ドキュメントはサイトのルート、FoldLab は `/foldlab/`、FoldNotes は `/foldnotes/` に配置します。アップロード前に `vp run test:pages` でアプリのパス、アセット、ドキュメントのナビゲーションリンクを検証します。
 
 `FOLYX_BASE` が配信パス、`FOLYX_SITE` が origin です。Actions では、どちらも `configure-pages` から取得します。ローカルの Pages ビルドとドキュメント開発サーバーは、既定で `/folyx/` を使います。
 

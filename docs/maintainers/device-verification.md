@@ -2,9 +2,25 @@
 
 Use FoldLab to collect measurements and explore how a real device behaves. These are contributor notes, kept outside the public documentation site.
 
-Pixel 10 Pro Fold normal-display measurements from October 27, 2026 exposed a rounding-related fallback in 0.1.0. Both samples are preserved in the [regression fixture](../../packages/core/tests/fixtures/pixel-10-pro-fold-normal.json), including the original fallback snapshots. Hardware confirmation of the fix and verification of zoom, pan, keyboard behavior, rotation, and folding transitions remain pending. A provisional npm release can be published before that device verification is complete.
+## Pixel 10 Pro Fold results
 
-The recorded layout viewport is 851 × 817, the visual scale is `1.0001797676086426`, and the two 426 × 817 native segments extend to x = 852. The coordinate policy now accepts a finite positive scale when `abs(scale - 1) * max(viewport.width, viewport.height) <= 1`, while still requiring zero visual offsets and at most one CSS pixel of dimension and outer-bound discrepancy. Only overflowing edges are clamped, so regression tests expect two touching regions of width 426 and 425, `segments.source: "browser"`, `layout: "horizontal"`, and no gaps. Raw readings stay unchanged. The fixture's `pixel10ProFoldVerified: false` remains unchanged because the full device verification is incomplete.
+Normal-display measurements from October 27, 2026 exposed a rounding-related fallback in 0.1.0. Both samples are preserved in the [original regression fixture](../../packages/core/tests/fixtures/pixel-10-pro-fold-normal.json), including the fallback snapshots.
+
+That recording has an 851 × 817 layout viewport, a visual scale of `1.0001797676086426`, and two 426 × 817 native segments extending to x = 852. Browser Provider now accepts a finite positive scale when `abs(scale - 1) * max(viewport.width, viewport.height) <= 1`, while requiring zero visual offsets and at most one CSS pixel of dimension and outer-bound discrepancy. Only overflowing edges are clamped, producing two touching regions of width 426 and 425 with `segments.source: "browser"`, `layout: "horizontal"`, and no gaps.
+
+The [follow-up recording from October 28, 2026](../../packages/core/tests/fixtures/pixel-10-pro-fold-2026-10-28.json) confirms the fix on hardware. All 46 recorded snapshots match the snapshots returned by the current implementation using Browser Provider. The recording covers these results:
+
+| Recorded state                            | Result                                                                                                                           |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `continuous`, scale 1, zero offsets       | The native 852 × 721 region becomes 851 × 720, with `layout: "single"` and `segments.source: "browser"`.                         |
+| Change to `folded`, scale 1, zero offsets | Two native 426 × 721 regions become 426 × 720 and 425 × 720, with `layout: "horizontal"` and `segments.source: "browser"`.       |
+| Zoom and pan                              | `segments.source` becomes `fallback`; `availability.segments` stays `available`.                                                 |
+| Return to scale 1 and zero offsets        | The two browser regions return.                                                                                                  |
+| Final scale of about 1.00667              | Scale drift exceeds the rounding budget, so fallback is expected. The layout height changes from 720 to 817 CSS px near the end. |
+
+Regression tests replay each sample and the session in order, covering subscriber notifications, unchanged public fallback states, and the viewport height change. Raw measurements and metadata, including `scenario: "normal"` and `pixel10ProFoldVerified: false`, are preserved as exported.
+
+Keyboard behavior, rotation, and coverage of all folding states still need hardware verification. A provisional npm release can be published before those checks are complete.
 
 ## Recording a device session
 
